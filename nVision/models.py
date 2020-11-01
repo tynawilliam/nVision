@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
-class User(db.Model):
+class User(db.Model, UserMixin):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key = True)
@@ -41,6 +41,9 @@ class User(db.Model):
   boards = db.relationship(
     "Board", back_populates="user", cascade="all, delete-orphan"
   )
+  comments = db.relationship(
+    "Comment", back_populates="user", cascade="all, delete-orphan"
+  )
 
   def to_dict(self):
     return {
@@ -69,7 +72,7 @@ class Board(db.Model):
   created_at = db.Column(db.DateTime, nullable=False)
   updated_at = db.Column(db.DateTime, nullable=False)
 
-  user = db.relationship("User", back_populates="baords")
+  user = db.relationship("User", back_populates="boards")
   comments = db.relationship("Comment", back_populates="board", cascade="all, delete-orphan")
 
   def to_dict(self):
@@ -89,10 +92,10 @@ class Comment(db.Model):
   __tablename__ = 'comments'
 
   id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    board_id = db.Column(db.Integer, db.ForeignKey("boards.id"), nullable=False)
-    content = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, nullable=False)
+  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+  board_id = db.Column(db.Integer, db.ForeignKey("boards.id"), nullable=False)
+  content = db.Column(db.Text)
+  created_at = db.Column(db.DateTime, nullable=False)
 
   user = db.relationship("User", back_populates="comments")
   board = db.relationship("Board", back_populates="comments")

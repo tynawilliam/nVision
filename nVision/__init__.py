@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, request, session
+from datetime import datetime
+from flask import Flask, render_template, request, session, jsonify
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import (
@@ -16,13 +17,14 @@ from nVision.config import Config
 
 app = Flask(__name__)
 
+login_manager = LoginManager(app)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 
 ## Application Security
 CORS(app)
-CSRFProtect(app)
+# CSRFProtect(app)
 
 
 @login_manager.user_loader
@@ -39,10 +41,10 @@ def react_root(path):
     return app.send_static_file('index.html')
 
 
-@app.route('/api/csrf/restore')
-def restore_csrf():
-    id = current_user.id if current_user.is_authenticated else None
-    return {'csrf_token': generate_csrf(), "current_user_id": id}
+# @app.route('/api/csrf/restore')
+# def restore_csrf():
+#     id = current_user.id if current_user.is_authenticated else None
+#     return {'csrf_token': generate_csrf(), "current_user_id": id}
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -99,7 +101,7 @@ def signup():
     db.session.commit()
     # return redirect('/api/users')
 
-    authenticated, user = User.authenticate1(email, password)
+    authenticated, user = User.authenticate(email, password)
     if authenticated:
         login_user(user)
         return {"current_user_id": current_user.id, "current_user": current_user.to_dict()}

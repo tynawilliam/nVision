@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from starter_app.models import User
+from nVision.models import User
 from flask_login import current_user, login_required
 user_routes = Blueprint('users', __name__)
 
