@@ -11,8 +11,10 @@ from flask_login import (
     login_required
 )
 
-from nVision.models import db, User
+from nVision.models import db, User, Board, Comment
 from nVision.api.user_routes import user_routes
+from nVision.api.board_routes import board_routes
+from nVision.api.comment_routes import comment_routes
 from nVision.config import Config
 
 app = Flask(__name__)
@@ -20,6 +22,8 @@ app = Flask(__name__)
 login_manager = LoginManager(app)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(board_routes, url_prefix='/api/boards')
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
 db.init_app(app)
 
 ## Application Security
