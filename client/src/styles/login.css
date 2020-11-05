@@ -36,3 +36,8 @@
 .loginForm input{
     width: 200px;
 }
+.signUpForm input{
+    width: 250px;
+    height: 20px;
+    margin: 5px;
+}

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import AuthContext from '../src/context/AuthContext';
 import Login from './components/auth/Login';
+import Signup from './components/auth/Signup'
 import Homepage from './components/Homepage';
 import '../src/index.css'
 
 import UserList from './components/UsersList';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import AuthRoute from './components/auth/AuthRoute';
 
 
 function App() {
@@ -41,17 +44,13 @@ function App() {
                 </ul>
             </nav> */}
             <Switch>
-                <Route path="/users">
+                {/* <Route path="/users">
                     <UserList currentUserId={currentUserId}/>
-                </Route>
+                </Route> */}
+                <ProtectedRoute exact path="/" component={Homepage} currentUserId={currentUserId} />
+                <AuthRoute exact path='/signup' component={Signup}/>
+                <AuthRoute exact path='/login' component={Login}/>
 
-                <Route exact path="/" render={Homepage}>
-                    {/* <h1>User: {currentUserId}</h1> */}
-                </Route>
-
-                <Route path="/login">
-                    {currentUserId ? <Redirect to="/" /> : <Login />}
-                </Route>
             </Switch>
         </BrowserRouter>
     </AuthContext.Provider>

@@ -80,7 +80,9 @@ function Login(props) {
                         width: "220px",
                         border: "0",
                         backgroundColor: "#FF914D",
-                        borderRadius: "5px"
+                        borderRadius: "5px",
+                        fontWeight: "bold",
+                        fontSize: "17px"
                     }} className="login_submit" type="submit" value="Login"/>
                 </div>
             </form>
