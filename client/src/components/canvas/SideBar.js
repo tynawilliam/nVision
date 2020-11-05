@@ -11,13 +11,14 @@ function SideBar() {
             }}>
                 <input style={{
                     width: "150px",
+                    height: "50px",
                     background: "none",
                     border: "0",
                     fontSize: "25px",
                     paddingBottom: "20px",
                     textAlign: "center",
                     outline: "none",
-                    color: "rgba(255,255,255,0.8)"
+                    color: "#FF914D"
                 }} type='text' placeholder='Board name' />
             </form>
             <button>Template</button>

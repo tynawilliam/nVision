@@ -11,6 +11,7 @@ function Board() {
                 marginTop: "70px",
                 width: "700px",
                 height: "500px",
+                boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
                 backgroundColor: "white"
             }} className='blank_canvas'>
 
