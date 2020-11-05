@@ -1,0 +1,92 @@
+html,
+.canvasNav-body
+.sideBar-body{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.sideBar{
+    width: 200px;
+    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #06070F;
+    display: flex;
+    flex-direction: column;
+}
+.sideBar button{
+    background: none;
+    width: 100px;
+    border: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 25px;
+    cursor: pointer;
+}
+.sideBar button {
+    margin: 30px;
+}
+
+.sideBar .sideBar-logo{
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+/* Canvas Nav */
+.canvasNav{
+    width: 86vw;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F2F2;
+}
+
+.canvasNav a{
+    font-size: 25px;
+    margin: 50px;
+    text-decoration: none;
+    color: #050B26;
+
+}
+
+.canvasNav .styled_btn{
+    background-image: linear-gradient(45deg, red, goldenRod);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tool Bar */
+.toolbar{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #06070F;
+    padding-top: -10px;
+    border: 0.5px solid rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+}
+.toolbar .formatButton{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    outline: none;
+    border: 0;
+    background: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.toolbar .leftIcons{
+    margin: 10px;
+    border: 0;
+    background: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 25px;
+    cursor: pointer;
+}

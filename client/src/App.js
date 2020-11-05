@@ -9,6 +9,7 @@ import '../src/index.css'
 import UserList from './components/UsersList';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthRoute from './components/auth/AuthRoute';
+import Canvas from './pages/Canvas';
 
 
 function App() {
@@ -39,18 +40,18 @@ function App() {
         <BrowserRouter>
             {/* <nav>
                 <ul>
-                    <li><NavLink to="/" activeclass="active">Home</NavLink></li>
-                    <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
+                    <li><NavLink to='/canvas'>New Canvas</NavLink></li>
+                    <li><NavLink to='/'>Home</NavLink></li>
                 </ul>
             </nav> */}
             <Switch>
                 {/* <Route path="/users">
                     <UserList currentUserId={currentUserId}/>
                 </Route> */}
-                <ProtectedRoute exact path="/" component={Homepage} currentUserId={currentUserId} />
                 <AuthRoute exact path='/signup' component={Signup}/>
                 <AuthRoute exact path='/login' component={Login}/>
-
+                <ProtectedRoute exact path="/" component={Homepage} currentUserId={currentUserId} />
+                <Route exact path='/canvas' component={Canvas}></Route>
             </Switch>
         </BrowserRouter>
     </AuthContext.Provider>
