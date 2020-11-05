@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import '../../styles/canvas.css'
 
 function Toolbar() {
     return (
-        <div>
-            <h1>Toolbar</h1>
+        <div className='toolbar'>
+            <h1>Format</h1>
         </div>
     )
 }

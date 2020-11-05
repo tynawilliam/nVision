@@ -14,13 +14,12 @@ function Canvas() {
                 <SideBar />
             </div>
             <div className='col2'>
-                <div className='row1'>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column"
+                }} className='row1'>
                     <CanvasNav />
-                </div>
-                <div className='row2'>
                     <Toolbar />
-                </div>
-                <div className='row3'>
                     <Board />
                 </div>
             </div>
