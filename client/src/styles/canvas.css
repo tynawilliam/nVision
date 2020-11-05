@@ -1,0 +1,58 @@
+html,
+.canvasNav-body
+.sideBar-body{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.sideBar{
+    width: 200px;
+    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #06070F;
+    display: flex;
+    flex-direction: column;
+}
+.sideBar button{
+    background: none;
+    width: 100px;
+    border: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 25px;
+    cursor: pointer;
+}
+.sideBar button {
+    margin: 30px;
+}
+
+.sideBar .sideBar-logo{
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+/* Canvas Nav */
+.canvasNav{
+    width: 86vw;
+    height: 68px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F2F2;
+}
+
+.canvasNav a{
+    font-size: 25px;
+    margin: 50px;
+    text-decoration: none;
+    color: #050B26;
+
+}
+
+.canvasNav .styled_btn{
+    /* background-color: salmon; */
+}
