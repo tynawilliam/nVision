@@ -17,7 +17,10 @@ function UsersList (props) {
     const userComponents = users.map((user) => <User key={user.id} user={user} />)
     return (
         <>
-            <h1>User List: </h1>
+            <h1>Current User:</h1>
+            {props.currentUserId}
+
+            <h2>User List: </h2>
             {userComponents}
         </>
         );
