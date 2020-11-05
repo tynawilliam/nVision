@@ -112,6 +112,13 @@ def signup():
 
     return {"errors": ["Invalid email, and/or password"]}, 401
 
+@app.route('/restore')
+def restore():
+    id = current_user.id if current_user.is_authenticated else None
+    user = None if not current_user.is_authenticated else current_user.to_dict()
+    if current_user:
+        return {"current_user_id": id, "current_user": user}
+
 @app.route('/logout', methods=['POST'])
 @login_required
 def logout():
