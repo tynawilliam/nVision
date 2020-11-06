@@ -11,6 +11,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthRoute from './components/auth/AuthRoute';
 import Canvas from './pages/Canvas';
 
+import { DndProvider } from 'react-dnd';
+import {HTML5Backend} from 'react-dnd-html5-backend';
+import Card from './components/Card';
+
 
 function App() {
     const [fetchWithCSRF, setFetchWithCSRF] = useState(() => fetch);
@@ -38,21 +42,28 @@ function App() {
   return (
     <AuthContext.Provider value={authContextValue}>
         <BrowserRouter>
-            {/* <nav>
-                <ul>
-                    <li><NavLink to='/canvas'>New Canvas</NavLink></li>
-                    <li><NavLink to='/'>Home</NavLink></li>
-                </ul>
-            </nav> */}
-            <Switch>
-                {/* <Route path="/users">
-                    <UserList currentUserId={currentUserId}/>
-                </Route> */}
-                <AuthRoute exact path='/signup' component={Signup}/>
-                <AuthRoute exact path='/login' component={Login}/>
-                <ProtectedRoute exact path="/" component={Homepage} currentUserId={currentUserId} />
-                <Route exact path='/canvas' component={Canvas}></Route>
-            </Switch>
+            <DndProvider backend={HTML5Backend}>
+                {/* <nav>
+                    <ul>
+                        <li><NavLink to='/canvas'>New Canvas</NavLink></li>
+                        <li><NavLink to='/'>Home</NavLink></li>
+                    </ul>
+                </nav> */}
+                <Switch>
+                    {/* <Route path="/users">
+                        <UserList currentUserId={currentUserId}/>
+                    </Route> */}
+                    <AuthRoute exact path='/signup' component={Signup}/>
+                    <AuthRoute exact path='/login' component={Login}/>
+                    <ProtectedRoute exact path="/" component={Homepage} currentUserId={currentUserId} />
+                    <Route exact path='/canvas'>
+                        <Canvas />
+                    </Route>
+                    <Route exact path='/card'>
+                        <Card />
+                    </Route>
+                </Switch>
+            </DndProvider>
         </BrowserRouter>
     </AuthContext.Provider>
   );
