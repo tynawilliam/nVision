@@ -1,12 +1,21 @@
 import React, { useState, createContext } from 'react'
 import ImageCard from './ImageCard';
 import Target from './Target';
+import { useDrop } from 'react-dnd';
+import { itemTypes } from '../../utils/items';
 
 export const ImgContext = createContext({
     markAsDropped: null,
 })
 
 const ImageList = () => {
+    const [{isOver}, drop] = useDrop({
+        accept: itemTypes.CARD,
+        drop: (item, monitor) => notDropped(item.id),
+        collect: monitor => ({
+            isOver: !!monitor.isOver()
+        })
+    })
 
     const [images, setImages] = useState([
         {
@@ -60,8 +69,9 @@ const ImageList = () => {
                     />
                 ))}
                 </Target>
-                <div style={{
-                    width: "150px"
+                <div ref={drop} style={{
+                    width: "250px",
+                    backgroundColor: isOver ? "wheat" : "#333333"
                 }}>
                     {images
                         .filter((img, i) => img.status === 'nd' )

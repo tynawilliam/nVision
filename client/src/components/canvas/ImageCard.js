@@ -20,10 +20,11 @@ function ImageCard(props) {
             height: "100px",
             marginBottom: "10px",
             margin: "5px",
+            marginLeft: "40px",
             opacity: isDragging ? "0.5" : "1"
         }}>
             <p><img style={{
-                width: "100px",
+                width: "150px",
                 height: "100px"
             }} src={props.url} alt="Not Found" /></p>
         </div>
