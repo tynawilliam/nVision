@@ -16,13 +16,13 @@ function CanvasNav() {
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                 }} className='styled_btn' id='canvasNav_home' href="/">Home</a>
-                <a className='styled_btn' id='canvasNav_feed' href='#'>Feed</a>
+                <a className='styled_btn' id='canvasNav_feed' href='/'>Feed</a>
             </div>
             <div className='rightNav'>
-                <a style={{
+                <a href="/" style={{
                     fontFamily: "Apple Chancery, cursive"
                 }}>Tyna William</a>
-                <a>{user}</a>
+                <a href='/'>{user}</a>
             </div>
         </div>
     )
