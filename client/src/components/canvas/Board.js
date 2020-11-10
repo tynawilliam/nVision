@@ -1,21 +1,22 @@
-import React from 'react'
+import React from 'react';
+import ImageList from './ImageList';
+import Target from './Target';
 
 function Board() {
     return (
         <div style={{
             backgroundColor: "lightgrey",
-            height: "81.7vh"
+            height: "81.7vh",
+            display: "flex",
+            flexDirection: "row"
         }}>
             <div style={{
-                margin: "0 auto",
-                marginTop: "70px",
-                width: "700px",
                 height: "500px",
-                boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-                backgroundColor: "white"
-            }} className='blank_canvas'>
-
+                marginTop: "100px"
+            }}>
+                <ImageList />
             </div>
+            {/* <Target /> */}
         </div>
     )
 }
