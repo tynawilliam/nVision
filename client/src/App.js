@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-do
 import AuthContext from '../src/context/AuthContext';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup'
-import Homepage from './components/Homepage';
+import Homepage from './components/feed/Homepage';
 import '../src/index.css'
 
 import UserList from './components/UsersList';
@@ -20,6 +20,7 @@ function App() {
     const [fetchWithCSRF, setFetchWithCSRF] = useState(() => fetch);
     const [currentUserId, setCurrentUserId] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true)
     const authContextValue = {
         fetchWithCSRF,
         currentUserId,
@@ -34,13 +35,16 @@ function App() {
             const data = await res.json()
             const { current_user_id, current_user} = data
             setCurrentUserId(current_user_id)
-            setCurrentUser(currentUser)
+            setCurrentUser(current_user)
+            setLoading(false)
         })()
     }, [])
-
+    // console.log(currentUser.username)
 
   return (
     <AuthContext.Provider value={authContextValue}>
+        {loading && <h1>Loading</h1>}
+        {!loading &&
         <BrowserRouter>
             <DndProvider backend={HTML5Backend}>
                 {/* <nav>
@@ -55,9 +59,10 @@ function App() {
                     </Route> */}
                     <AuthRoute exact path='/signup' component={Signup}/>
                     <AuthRoute exact path='/login' component={Login}/>
-                    <ProtectedRoute exact path="/" component={Homepage} currentUserId={currentUserId} />
+                    <ProtectedRoute exact path="/" component={Homepage} />
                     <Route exact path='/canvas'>
                         <Canvas />
+                        {currentUser.username}
                     </Route>
                     <Route exact path='/card'>
                         <Card />
@@ -65,6 +70,7 @@ function App() {
                 </Switch>
             </DndProvider>
         </BrowserRouter>
+    }
     </AuthContext.Provider>
   );
 }
