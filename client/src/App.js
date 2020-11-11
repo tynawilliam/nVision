@@ -62,7 +62,6 @@ function App() {
                     <ProtectedRoute exact path="/" component={Homepage} />
                     <Route exact path='/canvas'>
                         <Canvas />
-                        {currentUser.username}
                     </Route>
                     <Route exact path='/card'>
                         <Card />
