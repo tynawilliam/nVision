@@ -12,6 +12,7 @@ Users can create unique vision boards by dragging and dropping images, color sti
 ![Canvas](https://raw.githubusercontent.com/tynawilliam/nVision/master/Documentation/Pages/canvasW%3AMenu.png)
 
 ### Feed
+Users get to view, like and save boards from people they follow
 
 ![Feed](https://raw.githubusercontent.com/tynawilliam/nVision/master/Documentation/Pages/HomePage.png)
 
