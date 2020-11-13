@@ -13,7 +13,8 @@ import Canvas from './pages/Canvas';
 
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
-import Card from './components/Card';
+// import Card from './components/Card';
+import VBoard from './components/canvas/konva/VBoard';
 
 
 function App() {
@@ -64,7 +65,7 @@ function App() {
                         <Canvas />
                     </Route>
                     <Route exact path='/card'>
-                        <Card />
+                        <VBoard />
                     </Route>
                 </Switch>
             </DndProvider>
