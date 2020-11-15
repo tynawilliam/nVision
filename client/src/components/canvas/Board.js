@@ -1,22 +1,18 @@
 import React from 'react';
 import ImageList from './ImageList';
+import { Canvas } from './konva/Canvas';
+import { Palette } from './konva/Palette';
 import Target from './Target';
 
 function Board() {
     return (
         <div style={{
-            backgroundColor: "lightgrey",
-            height: "81.7vh",
             display: "flex",
-            flexDirection: "row"
+            flexDirection: "row",
+            width: "600px"
         }}>
-            <div style={{
-                height: "500px",
-                marginTop: "100px"
-            }}>
-                <ImageList />
-            </div>
-            {/* <Target /> */}
+            <Palette />
+            <Canvas />
         </div>
     )
 }

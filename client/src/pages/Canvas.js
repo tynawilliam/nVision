@@ -1,6 +1,7 @@
 import React from 'react'
 import Board from '../components/canvas/Board'
 import CanvasNav from '../components/canvas/CanvasNav'
+import { PropertiesPanel } from '../components/canvas/konva/PropertiesPanel'
 import SideBar from '../components/canvas/SideBar'
 import Toolbar from '../components/canvas/Toolbar'
 
@@ -19,7 +20,7 @@ function Canvas() {
                     flexDirection: "column"
                 }} className='row1'>
                     <CanvasNav />
-                    <Toolbar />
+                    <PropertiesPanel />
                     <Board />
                 </div>
             </div>
