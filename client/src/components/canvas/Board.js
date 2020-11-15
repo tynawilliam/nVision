@@ -1,8 +1,8 @@
 import React from 'react';
-import ImageList from './ImageList';
+// import ImageList from './ImageList';
 import { Canvas } from './konva/Canvas';
 import { Palette } from './konva/Palette';
-import Target from './Target';
+// import Target from './Target';
 
 function Board() {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/canvas.css'
-import ImageList from './ImageList';
+// import ImageList from './ImageList';
 
 function SideBar() {
     return (
