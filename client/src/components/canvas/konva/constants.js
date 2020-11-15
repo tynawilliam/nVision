@@ -1,6 +1,7 @@
 export const SHAPE_TYPES = {
   RECT: "rect",
   CIRCLE: "circle",
+  PHOTO: "image"
 };
 
 export const DEFAULTS = {
@@ -16,6 +17,10 @@ export const DEFAULTS = {
     FILL: "#FF914D",
     RADIUS: 50,
   },
+  PHOTO: {
+    STROKE: "#FFF000",
+    ROTATION: 0,
+  },
 };
 
 export const LIMITS = {
@@ -26,6 +31,10 @@ export const LIMITS = {
   CIRCLE: {
     MAX: 500,
     MIN: 5,
+  },
+  PHOTO: {
+    MAX: 1000,
+    MIN: 10,
   },
 };
 

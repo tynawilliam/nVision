@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import { Layer, Stage } from "react-konva";
 
 import {
@@ -6,6 +6,7 @@ import {
   clearSelection,
   createCircle,
   createRectangle,
+  createPhoto,
   saveDiagram,
   reset,
 } from "./state";
@@ -16,14 +17,18 @@ const handleDragOver = (event) => event.preventDefault();
 
 export function Canvas() {
   const shapes = useShapes((state) => Object.entries(state.shapes));
+  const [photos, setPhotos] = useState([])
 
   const stageRef = useRef();
+  useEffect(() => console.log(shapes),[shapes])
 
   const handleDrop = useCallback((event) => {
     const draggedData = event.nativeEvent.dataTransfer.getData(DRAG_DATA_KEY);
 
+    console.log('Dragged Data')
+    console.log(draggedData)
     if (draggedData) {
-      const { offsetX, offsetY, type, clientHeight, clientWidth } = JSON.parse(
+      const { offsetX, offsetY, type, clientHeight, clientWidth, currentPhoto } = JSON.parse(
         draggedData
       );
 
@@ -43,9 +48,22 @@ export function Canvas() {
           x: coords.x - (offsetX - clientWidth / 2),
           y: coords.y - (offsetY - clientHeight / 2),
         });
+      } else if (type === SHAPE_TYPES.PHOTO) {
+        setPhotos((state) => (
+          [...state, currentPhoto]
+        ))
+
+        createPhoto({
+          currentPhoto: currentPhoto,
+          x: coords.x - offsetX,
+          y: coords.y - offsetY,
+          height: clientHeight,
+          width: clientWidth
+        })
       }
     }
   }, []);
+  console.log(stageRef.current)
 
   return (
     <main className="k-canvas" onDrop={handleDrop} onDragOver={handleDragOver}>

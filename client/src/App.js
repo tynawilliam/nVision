@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import AuthContext from '../src/context/AuthContext';
+import PhotoContext from '../src/context/PhotoContext';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup'
 import Homepage from './components/feed/Homepage';
@@ -22,6 +23,17 @@ function App() {
     const [currentUserId, setCurrentUserId] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true)
+    const [photos, setPhotos] = useState([
+        {
+            id: 1,
+            url: 'https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+        },
+        {
+            id: 2,
+            url: 'https://images.unsplash.com/photo-1426024084828-5da21e13f5dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80'
+        }
+    ])
+    const [currentPhoto, setCurrentPhoto] = useState(null)
     const authContextValue = {
         fetchWithCSRF,
         currentUserId,
@@ -29,6 +41,12 @@ function App() {
         currentUser,
         setCurrentUser
     };
+
+    const photoContextValue = {
+        currentPhoto,
+        setCurrentPhoto,
+        photos
+    }
 
     useEffect(() => {
         (async () => {
@@ -46,30 +64,32 @@ function App() {
     <AuthContext.Provider value={authContextValue}>
         {loading && <h1>Loading</h1>}
         {!loading &&
-        <BrowserRouter>
-            <DndProvider backend={HTML5Backend}>
-                {/* <nav>
-                    <ul>
-                        <li><NavLink to='/canvas'>New Canvas</NavLink></li>
-                        <li><NavLink to='/'>Home</NavLink></li>
-                    </ul>
-                </nav> */}
-                <Switch>
-                    {/* <Route path="/users">
-                        <UserList currentUserId={currentUserId}/>
-                    </Route> */}
-                    <AuthRoute exact path='/signup' component={Signup}/>
-                    <AuthRoute exact path='/login' component={Login}/>
-                    <ProtectedRoute exact path="/" component={Homepage} />
-                    <Route exact path='/canvas'>
-                        <Canvas />
-                    </Route>
-                    <Route exact path='/card'>
-                        <VBoard />
-                    </Route>
-                </Switch>
-            </DndProvider>
-        </BrowserRouter>
+        <PhotoContext.Provider value={photoContextValue}>
+            <BrowserRouter>
+                <DndProvider backend={HTML5Backend}>
+                    {/* <nav>
+                        <ul>
+                            <li><NavLink to='/canvas'>New Canvas</NavLink></li>
+                            <li><NavLink to='/'>Home</NavLink></li>
+                        </ul>
+                    </nav> */}
+                    <Switch>
+                        {/* <Route path="/users">
+                            <UserList currentUserId={currentUserId}/>
+                        </Route> */}
+                        <AuthRoute exact path='/signup' component={Signup}/>
+                        <AuthRoute exact path='/login' component={Login}/>
+                        <ProtectedRoute exact path="/" component={Homepage} />
+                        <Route exact path='/canvas'>
+                            <Canvas />
+                        </Route>
+                        <Route exact path='/card'>
+                            <VBoard />
+                        </Route>
+                    </Switch>
+                </DndProvider>
+            </BrowserRouter>
+        </PhotoContext.Provider>
     }
     </AuthContext.Provider>
   );
