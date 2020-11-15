@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import OptionsContext from '../../context/OptionsContext';
 import '../../styles/canvas.css'
 // import ImageList from './ImageList';
 
 function SideBar() {
+    const [currentOption, setCurrentOption] = useContext(OptionsContext)
+    const handleClick = e => {
+        setCurrentOption(e.target.id)
+    }
     return (
         <div style={{
             display: "flex",
@@ -26,11 +31,11 @@ function SideBar() {
                         color: "#FF914D"
                     }} type='text' placeholder='Board name' />
                 </form>
-                <button>Template</button>
-                <button>Images</button>
-                <button>Stickers</button>
-                <button>Ribbons</button>
-                <button>Notes</button>
+                <button id='template' onClick={handleClick}>Template</button>
+                <button id='images' onClick={handleClick}>Images</button>
+                <button id='shapes' onClick={handleClick}>Stickers</button>
+                <button id='ribbons' onClick={handleClick}>Ribbons</button>
+                <button id='notes' onClick={handleClick}>Notes</button>
             </div>
         </div>
     )

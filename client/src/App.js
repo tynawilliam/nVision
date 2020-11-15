@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import AuthContext from '../src/context/AuthContext';
 import PhotoContext from '../src/context/PhotoContext';
+import OptionsContext from '../src/context/OptionsContext';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup'
 import Homepage from './components/feed/Homepage';
@@ -14,7 +15,6 @@ import Canvas from './pages/Canvas';
 
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
-// import Card from './components/Card';
 import VBoard from './components/canvas/konva/VBoard';
 
 
@@ -34,6 +34,7 @@ function App() {
         }
     ])
     const [currentPhoto, setCurrentPhoto] = useState(null)
+    const [currentOption, setCurrentOption] = useState('shapes')
     const authContextValue = {
         fetchWithCSRF,
         currentUserId,
@@ -48,6 +49,11 @@ function App() {
         photos
     }
 
+    const optionsContextValue = [
+        currentOption,
+        setCurrentOption
+    ]
+
     useEffect(() => {
         (async () => {
             const res = await fetch('/restore')
@@ -58,38 +64,39 @@ function App() {
             setLoading(false)
         })()
     }, [])
-    // console.log(currentUser.username)
 
   return (
     <AuthContext.Provider value={authContextValue}>
         {loading && <h1>Loading</h1>}
         {!loading &&
-        <PhotoContext.Provider value={photoContextValue}>
-            <BrowserRouter>
-                <DndProvider backend={HTML5Backend}>
-                    {/* <nav>
-                        <ul>
-                            <li><NavLink to='/canvas'>New Canvas</NavLink></li>
-                            <li><NavLink to='/'>Home</NavLink></li>
-                        </ul>
-                    </nav> */}
-                    <Switch>
-                        {/* <Route path="/users">
-                            <UserList currentUserId={currentUserId}/>
-                        </Route> */}
-                        <AuthRoute exact path='/signup' component={Signup}/>
-                        <AuthRoute exact path='/login' component={Login}/>
-                        <ProtectedRoute exact path="/" component={Homepage} />
-                        <Route exact path='/canvas'>
-                            <Canvas />
-                        </Route>
-                        <Route exact path='/card'>
-                            <VBoard />
-                        </Route>
-                    </Switch>
-                </DndProvider>
-            </BrowserRouter>
-        </PhotoContext.Provider>
+        <OptionsContext.Provider value={optionsContextValue}>
+            <PhotoContext.Provider value={photoContextValue}>
+                <BrowserRouter>
+                    <DndProvider backend={HTML5Backend}>
+                        {/* <nav>
+                            <ul>
+                                <li><NavLink to='/canvas'>New Canvas</NavLink></li>
+                                <li><NavLink to='/'>Home</NavLink></li>
+                            </ul>
+                        </nav> */}
+                        <Switch>
+                            {/* <Route path="/users">
+                                <UserList currentUserId={currentUserId}/>
+                            </Route> */}
+                            <AuthRoute exact path='/signup' component={Signup}/>
+                            <AuthRoute exact path='/login' component={Login}/>
+                            <ProtectedRoute exact path="/" component={Homepage} />
+                            <Route exact path='/canvas'>
+                                <Canvas />
+                            </Route>
+                            <Route exact path='/card'>
+                                <VBoard />
+                            </Route>
+                        </Switch>
+                    </DndProvider>
+                </BrowserRouter>
+            </PhotoContext.Provider>
+        </OptionsContext.Provider>
     }
     </AuthContext.Provider>
   );
