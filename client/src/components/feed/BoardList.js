@@ -13,7 +13,8 @@ const customStyles = {
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
         width: '700px',
-        height: '700px'
+        height: '700px',
+        borderRadius: "30px"
     }
   };
 
@@ -212,10 +213,7 @@ function BoardList() {
                 style={customStyles}
                 contentLabel='Example Modal'
             >
-                <div style={{
-                    width: '300px',
-                    height: "300px",
-                }}>
+                <div>
                     <img style={{
                         width: "600px",
                         height: "500px"
