@@ -2,6 +2,20 @@ import React, {useState} from 'react';
 import '../../styles/feed.css'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Modal from 'react-modal';
+
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+        width: '700px',
+        height: '700px'
+    }
+  };
 
 function BoardList() {
     const like = <FontAwesomeIcon icon={faHeart} />
@@ -155,22 +169,27 @@ function BoardList() {
         },
     ])
 
-    const [isModal, setIsModel] = useState(false)
+    const [isModal, setIsModal] = useState(false)
+    const [show, setShow] = useState(false)
+    const [activeBoard, setActiveBoard] = useState({})
 
     const handleClick = e => {
         e.preventDefault()
-        const getId = e.nativeEvent.path[2].id
-        const activeBoard = boards.filter(board => {
+        const getId = e.nativeEvent.path[1].id
+        const getBoard = boards.filter(board => {
             return board.id === parseInt(getId)
         })
-        console.log(isModal)
-
+        setActiveBoard(getBoard[0])
         console.log(activeBoard)
+        setShow(true)
+        // console.log(e.nativeEvent.path[1].id)
     }
+    const handleClose = () => setShow(false)
+
     return (
         <div className='feed'>
             {boards.map((board, idx) => (
-                <div className='feedBoard' key={idx} id={board.id}>
+                <div className='feedBoard' key={idx} id={board.id} onClick={handleClick}>
                     <img src={board.board_url} />
                     <div className='feedBoard_info'>
                         <h3>{board.name}</h3>
@@ -181,15 +200,47 @@ function BoardList() {
                         }}>{board.username}
                             <span>
                                 {board.likes}
-                                <button type='submit' id={board.id} onClick={handleClick}>{like}</button>
+                                <button>{like}</button>
                             </span>
                         </span>
                     </div>
                 </div>
             ))}
+            <Modal
+                isOpen={show}
+                onRequestClose={handleClose}
+                style={customStyles}
+                contentLabel='Example Modal'
+            >
+                <div style={{
+                    width: '300px',
+                    height: "300px",
+                }}>
+                    <img style={{
+                        width: "600px",
+                        height: "500px"
+                    }} src={activeBoard.board_url} />
+                    <div>
+                        <h3>{activeBoard.name}</h3>
+                        <span style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-between"
+                        }}>{activeBoard.username}
+                            <span>
+                                {activeBoard.likes}
+                                <button type='submit' id={activeBoard.id} onClick={handleClick}>{like}</button>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+            </Modal>
 
         </div>
     )
+
+
 }
 
 export default BoardList
