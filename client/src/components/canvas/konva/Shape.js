@@ -8,8 +8,7 @@ import { Photo } from "./Photo";
 // import { shapes } from "konva/types/Shape";
 
 export function Shape({ shape }) {
-  // console.log('State shape')
-  // console.log(shape)
+
   const isSelectedSelector = useCallback(
     (state) => state.selected === shape.id,
     [shape]

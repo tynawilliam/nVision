@@ -20,13 +20,10 @@ export function Canvas() {
   const [photos, setPhotos] = useState([])
 
   const stageRef = useRef();
-  useEffect(() => console.log(shapes),[shapes])
 
   const handleDrop = useCallback((event) => {
     const draggedData = event.nativeEvent.dataTransfer.getData(DRAG_DATA_KEY);
 
-    console.log('Dragged Data')
-    console.log(draggedData)
     if (draggedData) {
       const { offsetX, offsetY, type, clientHeight, clientWidth, currentPhoto } = JSON.parse(
         draggedData
@@ -63,7 +60,6 @@ export function Canvas() {
       }
     }
   }, []);
-  console.log(stageRef.current)
 
   return (
     <main className="k-canvas" onDrop={handleDrop} onDragOver={handleDragOver}>

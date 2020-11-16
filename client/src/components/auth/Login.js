@@ -34,9 +34,7 @@ function Login(props) {
             if (!res.ok) {
                 console.log("Error")
             } else {
-                console.log(resData)
                 setCurrentUserId(resData.current_user_id)
-                console.log("Success")
             }
         }
         loginUser();

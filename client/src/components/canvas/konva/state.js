@@ -47,8 +47,7 @@ export const createRectangle = ({ x, y }) => {
 };
 
 export const createPhoto = ({ x, y, width, height, currentPhoto }) => {
-  console.log('Current photo')
-  console.log(currentPhoto)
+
   setState((state) => {
     state.shapes[nanoid()] = {
       type: SHAPE_TYPES.PHOTO,
