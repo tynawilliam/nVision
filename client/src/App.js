@@ -26,11 +26,23 @@ function App() {
     const [photos, setPhotos] = useState([
         {
             id: 1,
-            url: 'https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+            url: 'https://images.unsplash.com/photo-1593692439810-bf99f1df4e52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
         },
         {
             id: 2,
-            url: 'https://images.unsplash.com/photo-1426024084828-5da21e13f5dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80'
+            url: 'https://images.unsplash.com/photo-1558535284-39fe3f893047?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
+        },
+        {
+            id: 3,
+            url: 'https://images.unsplash.com/photo-1532713031318-db2d14e4b3e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80'
+        },
+        {
+            id: 4,
+            url: 'https://images.unsplash.com/photo-1466036692599-070d032f4711?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+        },
+        {
+            id: 5,
+            url: 'https://images.unsplash.com/photo-1515982200576-f29f11444503?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
         }
     ])
     const [currentPhoto, setCurrentPhoto] = useState(null)

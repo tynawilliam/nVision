@@ -33,8 +33,8 @@ function SideBar() {
                 </form>
                 <button id='template' onClick={handleClick}>Template</button>
                 <button id='images' onClick={handleClick}>Images</button>
-                <button id='shapes' onClick={handleClick}>Stickers</button>
-                <button id='ribbons' onClick={handleClick}>Ribbons</button>
+                <button id='shapes' onClick={handleClick}>Shapes</button>
+                <button id='stickers' onClick={handleClick}>Stickers</button>
                 <button id='notes' onClick={handleClick}>Notes</button>
             </div>
         </div>
