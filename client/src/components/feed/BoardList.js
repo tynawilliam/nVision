@@ -185,6 +185,11 @@ function BoardList() {
         setShow(true)
         // console.log(e.nativeEvent.path[1].id)
     }
+
+    const changeColor = e => {
+        e.preventDefault()
+
+    }
     const handleClose = () => setShow(false)
 
     return (
@@ -227,7 +232,7 @@ function BoardList() {
                         }}>{activeBoard.username}
                             <span>
                                 {activeBoard.likes}
-                                <button type='submit' id={activeBoard.id} onClick={handleClick}>{like}</button>
+                                <button type='submit' id={activeBoard.id} onClick={changeColor}>{like}</button>
                             </span>
                         </span>
                     </div>

@@ -15,7 +15,7 @@ function CanvasNav() {
                     backgroundSize: "100%",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
-                }} className='styled_btn' id='canvasNav_home' href="/">Home</a>
+                }} className='styled_btn' id='canvasNav_home' href="/profile">Home</a>
                 <a className='styled_btn' id='canvasNav_feed' href='/'>Feed</a>
             </div>
             <div className='rightNav'>

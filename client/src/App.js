@@ -16,6 +16,7 @@ import Canvas from './pages/Canvas';
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import VBoard from './components/canvas/konva/VBoard';
+import Profile from './components/profile/Profile';
 
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
                             <AuthRoute exact path='/signup' component={Signup}/>
                             <AuthRoute exact path='/login' component={Login}/>
                             <ProtectedRoute exact path="/" component={Homepage} />
+                            <ProtectedRoute exact path='/profile' component={Profile} />
                             <Route exact path='/canvas'>
                                 <Canvas />
                             </Route>
