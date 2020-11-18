@@ -43,3 +43,10 @@ def get_friends(id):
     user = User.query.get(id)
     friends_lst = user.friends.split(',')
     return {"friends": friends_lst}
+
+@user_routes.route('/<int:id>/boards', methods=['GET'])
+def get_boards(id):
+  if request.method == 'GET':
+    boards = Board.query.filter(Board.user_id == id).all()
+
+    return {"boards": [board.to_dict() for board in boards]}
