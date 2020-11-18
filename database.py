@@ -8,36 +8,36 @@ from nVision.models import User, Board
 #user_id, name, board_url, likes, is_private
 
 boards = [
-  (1, "MyBoard", "https://images.squarespace-cdn.com/content/v1/56219993e4b09501ec54f74a/1492459278105-Z7JABV54FEMPF0HO9G6A/ke17ZwdGBToddI8pDm48kPoswlzjSVMM-SxOp7CV59BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIeQMKeWYgwh6Mn73n2eZmZLHHpcPIxgL2SArp_rN2M_AKMshLAGzx4R3EDFOm1kBS/Vision+Board", "200",False)
-  (1, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False)
-  (1, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False)
-  (1, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False)
-  (1, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False)
-  (1, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True)
-  (1, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True)
-  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
-  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False)
-  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False)
-  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False)
-  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False)
-  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True)
-  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True)
-  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
-  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
-  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False)
-  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False)
-  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False)
-  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False)
-  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True)
-  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True)
-  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
-  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
-  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False)
-  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False)
-  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False)
-  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False)
-  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True)
-  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True)
+  (1, "MyBoard", "https://images.squarespace-cdn.com/content/v1/56219993e4b09501ec54f74a/1492459278105-Z7JABV54FEMPF0HO9G6A/ke17ZwdGBToddI8pDm48kPoswlzjSVMM-SxOp7CV59BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIeQMKeWYgwh6Mn73n2eZmZLHHpcPIxgL2SArp_rN2M_AKMshLAGzx4R3EDFOm1kBS/Vision+Board", "200",False),
+  (1, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (1, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (1, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (1, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (1, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (1, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
   (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
 ]
 
