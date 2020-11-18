@@ -20,7 +20,8 @@ function Logout(props) {
         <div className='logoutDiv'>
             <form onSubmit={logOut}>
                 <button type="submit" className="logoutButton" style={{
-                    width: "200px"
+                    width: "200px",
+                    cursor: "pointer"
                 }}>Logout</button>
             </form>
         </div>
