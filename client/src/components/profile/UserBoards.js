@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Board from '../canvas/Board';
-import { featuredList } from './FeaturedList';
 import AuthContext from '../../context/AuthContext'
 
 function UserBoards() {
