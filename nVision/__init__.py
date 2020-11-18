@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from flask import Flask, render_template, request, session, jsonify
+from flask import Flask, render_template, request, session, jsonify, Blueprint
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import (
@@ -25,6 +25,9 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(board_routes, url_prefix='/api/boards')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
 db.init_app(app)
+
+image_blueprint = Blueprint('images', __name__, static_url_path='/images', static_folder='static/images')
+app.register_blueprint(image_blueprint)
 
 ## Application Security
 CORS(app)
