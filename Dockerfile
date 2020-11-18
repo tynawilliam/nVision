@@ -18,7 +18,7 @@ RUN ["npm", "run", "build", "--prefix", "client"]
 RUN ["cp", "-r", "client/build", "nVision/static"]
 RUN ["cp", "-r", "nVision/static/static/js", "nVision/static"]
 RUN ["cp", "-r", "nVision/static/static/css", "nVision/static"]
-RUN ["cp", "-r", "starter_app/static/static/media", "starter_app/static"]
+RUN ["cp", "-r", "nVision/static/static/media", "nVision/static"]
 
 # Setup Flask environment
 ENV FLASK_APP=nVision
