@@ -6,7 +6,13 @@ function UserBoards() {
     return (
         <div style={{
             display: "flex",
-            flexDirection: "row"
+            flexDirection: "row",
+            width: "90vw",
+            margin: "0 auto",
+            flexWrap: "wrap",
+            backgroundColor: "#fffff4",
+            alignItems: "center",
+            justifyContent: "left"
         }}>
             {featuredList.map((board) => (
                 <div>
