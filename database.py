@@ -51,7 +51,7 @@ with app.app_context():
             email = 'demo@user.com',
             username = 'DemoUser',
             password = "password",
-            profile_pitcure_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
+            profile_picture_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
             friends = '2,3,4',
             created_at = datetime.now(),
             updated_at = datetime.now()
@@ -62,7 +62,7 @@ with app.app_context():
             email = 'javier@javier.com',
             username = 'jman',
             password = "password",
-            profile_pitcure_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
+            profile_picture_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
             friends = '1,3,4',
             created_at = datetime.now(),
             updated_at = datetime.now()
@@ -73,7 +73,7 @@ with app.app_context():
             email = 'dean123@dean.com',
             username = 'TheDean',
             password = "password",
-            profile_pitcure_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
+            profile_picture_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
             friends = '2,1,4',
             created_at = datetime.now(),
             updated_at = datetime.now()
@@ -84,7 +84,7 @@ with app.app_context():
             email = 'ang123@ang.com',
             username = 'Angie',
             password = "password",
-            profile_pitcure_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
+            profile_picture_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
             friends = '2,3,1',
             created_at = datetime.now(),
             updated_at = datetime.now()
