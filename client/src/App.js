@@ -24,6 +24,7 @@ function App() {
     const [fetchWithCSRF, setFetchWithCSRF] = useState(() => fetch);
     const [currentUserId, setCurrentUserId] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
+    const [userPosts, setUserPosts] = useState(null)
     const [loading, setLoading] = useState(true)
     const [photos, setPhotos] = useState([
         {
@@ -54,7 +55,7 @@ function App() {
         currentUserId,
         setCurrentUserId,
         currentUser,
-        setCurrentUser
+        setCurrentUser,
     };
 
     const photoContextValue = {
@@ -78,6 +79,7 @@ function App() {
             setLoading(false)
         })()
     }, [])
+
 
   return (
     <AuthContext.Provider value={authContextValue}>
