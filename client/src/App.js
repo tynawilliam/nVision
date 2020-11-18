@@ -17,6 +17,7 @@ import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import VBoard from './components/canvas/konva/VBoard';
 import Profile from './components/profile/Profile';
+import FeaturedBoards from './components/profile/FeaturedBoards';
 
 
 function App() {
@@ -103,8 +104,8 @@ function App() {
                             <Route exact path='/canvas'>
                                 <Canvas />
                             </Route>
-                            <Route exact path='/card'>
-                                <VBoard />
+                            <Route exact path='/card' component={FeaturedBoards}>
+                                {/* <FeaturedBoards /> */}
                             </Route>
                         </Switch>
                     </DndProvider>

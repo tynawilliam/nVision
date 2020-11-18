@@ -27,6 +27,27 @@ export const featuredList = [
         board_url: "https://images.squarespace-cdn.com/content/v1/56219993e4b09501ec54f74a/1492459278105-Z7JABV54FEMPF0HO9G6A/ke17ZwdGBToddI8pDm48kPoswlzjSVMM-SxOp7CV59BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIeQMKeWYgwh6Mn73n2eZmZLHHpcPIxgL2SArp_rN2M_AKMshLAGzx4R3EDFOm1kBS/Vision+Board",
         likes: 500
     },
+    {
+        id: 5,
+        username: "Kelly",
+        name: "Wedding Inspo",
+        board_url: "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg",
+        likes: 500
+    },
+    {
+        id: 6,
+        username: "PooBear123",
+        name: "Wedding Inspo",
+        board_url: "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg",
+        likes: 500
+    },
+    {
+        id: 7,
+        username: "Destinee",
+        name: "Wedding Inspo",
+        board_url: "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg",
+        likes: 500
+    },
 
 
 ]
