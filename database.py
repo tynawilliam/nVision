@@ -90,7 +90,7 @@ with app.app_context():
             updated_at = datetime.now()
             )
 
-  db.session.add(ian)
+  db.session.add(demo)
   db.session.add(javier)
   db.session.add(dean)
   db.session.add(angela)
