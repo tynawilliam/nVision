@@ -104,9 +104,7 @@ function App() {
                             <Route exact path='/canvas'>
                                 <Canvas />
                             </Route>
-                            <Route exact path='/card' component={FeaturedBoards}>
-                                {/* <FeaturedBoards /> */}
-                            </Route>
+
                         </Switch>
                     </DndProvider>
                 </BrowserRouter>
