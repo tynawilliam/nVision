@@ -38,7 +38,15 @@ function BoardList() {
             try {
                 if (res.ok) {
                     const data = await res.json()
-                    setBoards(data.friends_boards[0])
+                    const friendsBoards = data.friends_boards
+                    // console.log(data)
+                    const boardList = []
+                    friendsBoards.forEach(boardLst => {
+                        for (const board in boardLst) {
+                            boardList.push(boardLst[board])
+                        }
+                    });
+                    setBoards(boardList)
 
                 }
             }catch(err) {
