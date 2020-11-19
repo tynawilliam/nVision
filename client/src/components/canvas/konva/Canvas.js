@@ -61,11 +61,25 @@ export function Canvas() {
     }
   }, []);
 
+  const downloadImg = () => {
+    console.log(stageRef.current)
+    const dataUrl = stageRef.current.toDataURL()
+    console.log(dataUrl)
+    const name = 'test.png'
+    const link = document.createElement('a')
+    link.download = name
+    link.href = dataUrl
+    document.body.appendChild(link)
+    link.click();
+    document.body.removeChild(link)
+  }
+
   return (
     <main className="k-canvas" onDrop={handleDrop} onDragOver={handleDragOver}>
       <div className="buttons">
         <button onClick={saveDiagram}>Save</button>
         <button onClick={reset}>Reset</button>
+        <button onClick={downloadImg}>Save As Image</button>
       </div>
       <Stage
         ref={stageRef}
