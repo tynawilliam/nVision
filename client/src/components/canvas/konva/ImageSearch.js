@@ -50,19 +50,32 @@ function ImageSearch() {
         return (
             <div>
                 <form>
-                    <input type='text' value={searchTerm} onChange={getWord}/>
-                    <button type='submit' onSubmit={getSearch}>Search</button>
+                    <input type='text' value={searchTerm} onChange={getWord} style={{
+                        backgroundColor: "whitesmoke",
+                        border: "1px solid grey",
+                        textAlign: "center",
+                        height: "30px",
+                        margin: "10px",
+                    }}/>
+                    <button type='submit' onSubmit={getSearch} style={{
+                        border: "1px solid grey"
+                    }}>Search</button>
                 </form>
                 <div style={{
                     display: "flex",
                     flexDirection: "row",
-                    flexWrap: "wrap"
+                    flexWrap: "wrap",
+                    width: "200px",
+                    backgroundColor: "grey",
+                    height: "600px",
+                    overflowY: "auto"
                 }}>
                     {images.map((img, idx) => (
                         <div key={idx}>
                             <img src={img.urls.small} style={{
-                                width: "200px",
-                                height: "250px"
+                                width: "100px",
+                                height: "150px",
+                                padding: "10px"
                             }}/>
                         </div>
                     ))}
