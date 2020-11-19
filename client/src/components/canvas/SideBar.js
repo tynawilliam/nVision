@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
+import BoardContext from '../../context/BoardContext';
 import OptionsContext from '../../context/OptionsContext';
 import '../../styles/canvas.css'
 // import ImageList from './ImageList';
 
 function SideBar() {
     const [currentOption, setCurrentOption] = useContext(OptionsContext)
+    const [boardName, setBoardName] = useContext(BoardContext)
     const handleClick = e => {
         setCurrentOption(e.target.id)
+    }
+
+    const getName = e => {
+        setBoardName(e.target.value)
     }
     return (
         <div style={{
@@ -29,7 +35,7 @@ function SideBar() {
                         textAlign: "center",
                         outline: "none",
                         color: "#FF914D"
-                    }} type='text' placeholder='Board name' />
+                    }} type='text' placeholder='Board name' value={boardName} onChange={getName}/>
                 </form>
                 <button id='template' onClick={handleClick}>Template</button>
                 <button id='images' onClick={handleClick}>Images</button>

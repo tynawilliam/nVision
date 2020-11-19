@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, useEffect } from "react";
+import React, { useRef, useCallback, useState, useEffect, useContext } from "react";
 import { Layer, Stage } from "react-konva";
 
 import {
@@ -12,12 +12,14 @@ import {
 } from "./state";
 import { DRAG_DATA_KEY, SHAPE_TYPES } from "./constants";
 import { Shape } from "./Shape";
+import BoardContext from "../../../context/BoardContext";
 
 const handleDragOver = (event) => event.preventDefault();
 
 export function Canvas() {
   const shapes = useShapes((state) => Object.entries(state.shapes));
   const [photos, setPhotos] = useState([])
+  const [boardName]  = useContext(BoardContext)
 
   const stageRef = useRef();
 
@@ -61,11 +63,25 @@ export function Canvas() {
     }
   }, []);
 
+  const downloadImg = () => {
+    console.log(stageRef.current)
+    const dataUrl = stageRef.current.toDataURL()
+    console.log(dataUrl)
+    const name = `${boardName}.png`
+    const link = document.createElement('a')
+    link.download = name
+    link.href = dataUrl
+    document.body.appendChild(link)
+    link.click();
+    document.body.removeChild(link)
+  }
+
   return (
     <main className="k-canvas" onDrop={handleDrop} onDragOver={handleDragOver}>
       <div className="buttons">
         <button onClick={saveDiagram}>Save</button>
         <button onClick={reset}>Reset</button>
+        <button onClick={downloadImg}>Save As Image</button>
       </div>
       <Stage
         ref={stageRef}

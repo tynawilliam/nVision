@@ -18,6 +18,7 @@ import {HTML5Backend} from 'react-dnd-html5-backend';
 import VBoard from './components/canvas/konva/VBoard';
 import Profile from './components/profile/Profile';
 import FeaturedBoards from './components/profile/FeaturedBoards';
+import BoardContext from './context/BoardContext';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
     ])
     const [currentPhoto, setCurrentPhoto] = useState(null)
     const [currentOption, setCurrentOption] = useState('shapes')
+    const [boardName, setBoardName] = useState('')
     const authContextValue = {
         fetchWithCSRF,
         currentUserId,
@@ -67,6 +69,11 @@ function App() {
     const optionsContextValue = [
         currentOption,
         setCurrentOption
+    ]
+
+    const boardContextValue = [
+        boardName,
+        setBoardName
     ]
 
     useEffect(() => {
@@ -87,29 +94,31 @@ function App() {
         {!loading &&
         <OptionsContext.Provider value={optionsContextValue}>
             <PhotoContext.Provider value={photoContextValue}>
-                <BrowserRouter>
-                    <DndProvider backend={HTML5Backend}>
-                        {/* <nav>
-                            <ul>
-                                <li><NavLink to='/canvas'>New Canvas</NavLink></li>
-                                <li><NavLink to='/'>Home</NavLink></li>
-                            </ul>
-                        </nav> */}
-                        <Switch>
-                            {/* <Route path="/users">
-                                <UserList currentUserId={currentUserId}/>
-                            </Route> */}
-                            <AuthRoute exact path='/signup' component={Signup}/>
-                            <AuthRoute exact path='/login' component={Login}/>
-                            <ProtectedRoute exact path="/" component={Homepage} />
-                            <ProtectedRoute exact path='/profile' component={Profile} />
-                            <Route exact path='/canvas'>
-                                <Canvas />
-                            </Route>
+                <BoardContext.Provider value={boardContextValue}>
+                    <BrowserRouter>
+                        <DndProvider backend={HTML5Backend}>
+                            {/* <nav>
+                                <ul>
+                                    <li><NavLink to='/canvas'>New Canvas</NavLink></li>
+                                    <li><NavLink to='/'>Home</NavLink></li>
+                                </ul>
+                            </nav> */}
+                            <Switch>
+                                {/* <Route path="/users">
+                                    <UserList currentUserId={currentUserId}/>
+                                </Route> */}
+                                <AuthRoute exact path='/signup' component={Signup}/>
+                                <AuthRoute exact path='/login' component={Login}/>
+                                <ProtectedRoute exact path="/" component={Homepage} />
+                                <ProtectedRoute exact path='/profile' component={Profile} />
+                                <Route exact path='/canvas'>
+                                    <Canvas />
+                                </Route>
 
-                        </Switch>
-                    </DndProvider>
-                </BrowserRouter>
+                            </Switch>
+                        </DndProvider>
+                    </BrowserRouter>
+                </BoardContext.Provider>
             </PhotoContext.Provider>
         </OptionsContext.Provider>
     }
