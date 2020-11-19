@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DRAG_DATA_KEY, SHAPE_TYPES } from "./constants";
 import  PhotoContext  from '../../../context/PhotoContext';
 import OptionsContext from '../../../context/OptionsContext';
@@ -9,7 +9,10 @@ import {
   faKissWinkHeart,
   faStar,
   faCoffee
-} from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons';
+import Unsplash, { toJson } from 'unsplash-js';
+import fetch from 'node-fetch';
+global.fetch = fetch;
 
 const stickers = [
   faHeart,
@@ -55,9 +58,43 @@ const handleDragStart = (event) => {
 
 export function Palette() {
   const [currentOption] = useContext(OptionsContext)
-  useEffect(() => console.log(`Hey there ${currentOption}`), [currentOption])
+  // useEffect(() => console.log(`Hey there ${currentOption}`), [currentOption])
+  // const { photos } = useContext(PhotoContext)
+  const [images, setImages ] = useState([
+    {
+        urls: {
+            small: "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg"
+        }
+    }
+])
+const [searchTerm, setSearchTerm] = useState('dog')
+    const unsplash = new Unsplash({ accessKey: `8aHQQpHFrOaLp9HmUj1KNGz7xJkNgIa2WgegE3_rscE` })
 
-  const { photos } = useContext(PhotoContext)
+    unsplash.users.profile("tynawilliam")
+        .catch(err => {
+            console.error(err)
+        })
+
+    useEffect(() => {
+        (async() => {
+            const data = await unsplash.search.photos(`${searchTerm}`, 1, 10, { orientation: "portrait", color: "green"})
+            try{
+                if (data.ok) {
+                    const jsonData = await data.json()
+                    console.log(jsonData)
+                    setImages(jsonData.results)
+                    // console.log(images)
+                }
+            }catch(err) {
+                console.error(err)
+            }
+        })()
+    }, [searchTerm])
+
+    const getWord = e => {
+        setSearchTerm(e.target.value)
+    }
+
   if (currentOption === 'shapes'){
 
     return (
@@ -79,14 +116,26 @@ export function Palette() {
   } else if (currentOption === 'images'){
     return (
       <aside className="palette">
+        <form>
+          <input type='text' value={searchTerm} onChange={getWord} style={{
+              backgroundColor: "whitesmoke",
+              border: "1px solid grey",
+              textAlign: "center",
+              height: "30px",
+              margin: "10px",
+          }}/>
+          {/* <button type='submit' onSubmit={getSearch} style={{
+              border: "1px solid grey"
+          }}>Search</button> */}
+                </form>
         <div style={{
             height: "600px",
             overflowY: "auto"
           }}>
-          {photos.map((photo, idx) => (
-            <div key={photo.id}>
+          {images.map((img, idx) => (
+            <div key={idx}>
               <img
-                src={photo.url}
+                src={img.urls.small}
                 data-shape={SHAPE_TYPES.PHOTO}
                 draggable
                 onDragStart={handleDragStart}
