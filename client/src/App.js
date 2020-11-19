@@ -115,9 +115,6 @@ function App() {
                                 <Route exact path='/canvas'>
                                     <Canvas />
                                 </Route>
-                                <Route exact path='/unsplash'>
-                                    <ImageSearch />
-                                </Route>
 
                             </Switch>
                         </DndProvider>
