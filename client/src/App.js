@@ -19,6 +19,7 @@ import VBoard from './components/canvas/konva/VBoard';
 import Profile from './components/profile/Profile';
 import FeaturedBoards from './components/profile/FeaturedBoards';
 import BoardContext from './context/BoardContext';
+import ImageSearch from './components/canvas/konva/ImageSearch';
 
 
 function App() {
@@ -113,6 +114,9 @@ function App() {
                                 <ProtectedRoute exact path='/profile' component={Profile} />
                                 <Route exact path='/canvas'>
                                     <Canvas />
+                                </Route>
+                                <Route exact path='/unsplash'>
+                                    <ImageSearch />
                                 </Route>
 
                             </Switch>
