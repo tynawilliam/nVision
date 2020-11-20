@@ -22,6 +22,7 @@ import BoardContext from './context/BoardContext';
 import ImageSearch from './components/canvas/konva/ImageSearch';
 import SearchContext from './context/SearchContext'
 import SavedContext from './context/SavedContext'
+import EditProfile from './components/profile/EditProfile';
 
 function App() {
     const [fetchWithCSRF, setFetchWithCSRF] = useState(() => fetch);
@@ -52,7 +53,7 @@ function App() {
         }
     ])
     const [currentPhoto, setCurrentPhoto] = useState(null)
-    const [currentOption, setCurrentOption] = useState('shapes')
+    const [currentOption, setCurrentOption] = useState('images')
     const [boardName, setBoardName] = useState('')
     const [feedSearch, setFeedSearch] = useState('')
     const [savedBoards, setSavedBoards] = useState([
@@ -127,9 +128,8 @@ function App() {
                                         <AuthRoute exact path='/login' component={Login}/>
                                         <ProtectedRoute exact path="/" component={Homepage} />
                                         <ProtectedRoute exact path='/profile' component={Profile} />
-                                        <Route exact path='/canvas'>
-                                            <Canvas />
-                                        </Route>
+                                        <ProtectedRoute exact path='/canvas' component={Canvas}/>
+                                        <ProtectedRoute exact path='/edit' component={EditProfile} />
 
                                     </Switch>
                                 </DndProvider>

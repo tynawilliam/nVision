@@ -15,7 +15,7 @@ function Navbar() {
                 <button><a href='/canvas'>New Board</a></button>
             </div>
             <div className='rightNav'>
-                <span>{currentUser.username}</span>
+            <button><a href='/edit'>{currentUser.username}</a></button>
                 <Logout />
             </div>
         </div>
