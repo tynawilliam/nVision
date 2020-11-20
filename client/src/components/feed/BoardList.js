@@ -109,11 +109,7 @@ function BoardList() {
                         }}>
                         <h3>{activeBoard.name}</h3>
                         <span>{activeBoard.username}
-                                <button style={{
-                                    fontSize: "20px",
-                                    paddingRight: "10px",
-                                    background: "none"
-                                }} type='submit' id={activeBoard.id} onClick={changeColor}>{save}</button>
+                                <button type='submit' id={activeBoard.id} onClick={changeColor} className='saveBtn'>{save}</button>
                         </span>
                     </div>
                 </div>

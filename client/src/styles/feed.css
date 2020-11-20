@@ -48,3 +48,14 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.saveBtn {
+    background: none;
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.saveBtn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
