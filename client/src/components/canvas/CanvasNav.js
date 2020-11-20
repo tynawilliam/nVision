@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser }from '@fortawesome/free-solid-svg-icons';
 import '../../styles/canvas.css'
+import AuthContext from '../../context/AuthContext';
 
 
 function CanvasNav() {
+    const {currentUser} = useContext(AuthContext)
     const user = <FontAwesomeIcon icon={faUser}/>
     return (
         <div className='canvasNav'>
@@ -19,9 +21,9 @@ function CanvasNav() {
                 <a className='styled_btn' id='canvasNav_feed' href='/'>Feed</a>
             </div>
             <div className='rightNav'>
-                <a href="/" style={{
+                <a href="/edit" style={{
                     fontFamily: "Apple Chancery, cursive"
-                }}>Tyna William</a>
+                }}>{currentUser.username}</a>
                 <a href='/'>{user}</a>
             </div>
         </div>
