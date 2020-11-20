@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import '../../styles/feed.css'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 import AuthContext from '../../context/AuthContext'
@@ -13,18 +13,21 @@ const customStyles = {
       bottom                : 'auto',
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
-        width: '700px',
-        height: '700px',
-        borderRadius: "30px"
+        width: '610px',
+        height: '600px',
+        borderRadius: "30px",
+        display: "flex",
+        justifyContent: "center"
     }
   };
 
 function BoardList() {
-    const like = <FontAwesomeIcon icon={faHeart} />
+    const save = <FontAwesomeIcon icon={faBookmark} />
     const {currentUserId} = useContext(AuthContext)
     const [isModal, setIsModal] = useState(false)
     const [show, setShow] = useState(false)
     const [activeBoard, setActiveBoard] = useState({})
+    const [likes, setLikes] = useState(null)
 
     const [boards, setBoards] = useState([
         {
@@ -64,7 +67,6 @@ function BoardList() {
         setActiveBoard(getBoard[0])
         console.log(activeBoard)
         setShow(true)
-        // console.log(e.nativeEvent.path[1].id)
     }
 
     const changeColor = e => {
@@ -85,10 +87,6 @@ function BoardList() {
                             flexDirection: "row",
                             justifyContent: "space-between"
                         }}>{board.user_id}
-                            <span>
-                                {board.likes}
-                                <button>{like}</button>
-                            </span>
                         </span>
                     </div>
                 </div>
@@ -104,17 +102,18 @@ function BoardList() {
                         width: "600px",
                         height: "500px"
                     }} src={activeBoard.board_url} />
-                    <div>
-                        <h3>{activeBoard.name}</h3>
-                        <span style={{
+                    <div style={{
                             display: "flex",
                             flexDirection: "row",
                             justifyContent: "space-between"
-                        }}>{activeBoard.username}
-                            <span>
-                                {activeBoard.likes}
-                                <button type='submit' id={activeBoard.id} onClick={changeColor}>{like}</button>
-                            </span>
+                        }}>
+                        <h3>{activeBoard.name}</h3>
+                        <span>{activeBoard.username}
+                                <button style={{
+                                    fontSize: "20px",
+                                    paddingRight: "10px",
+                                    background: "none"
+                                }} type='submit' id={activeBoard.id} onClick={changeColor}>{save}</button>
                         </span>
                     </div>
                 </div>

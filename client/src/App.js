@@ -98,16 +98,8 @@ function App() {
                 <BoardContext.Provider value={boardContextValue}>
                     <BrowserRouter>
                         <DndProvider backend={HTML5Backend}>
-                            {/* <nav>
-                                <ul>
-                                    <li><NavLink to='/canvas'>New Canvas</NavLink></li>
-                                    <li><NavLink to='/'>Home</NavLink></li>
-                                </ul>
-                            </nav> */}
+
                             <Switch>
-                                {/* <Route path="/users">
-                                    <UserList currentUserId={currentUserId}/>
-                                </Route> */}
                                 <AuthRoute exact path='/signup' component={Signup}/>
                                 <AuthRoute exact path='/login' component={Login}/>
                                 <ProtectedRoute exact path="/" component={Homepage} />
