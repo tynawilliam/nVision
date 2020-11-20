@@ -129,7 +129,7 @@ function BoardList() {
                 style={customStyles}
                 contentLabel='Example Modal'
             >
-                <div>
+                <div className='save'>
                     <img style={{
                         width: "600px",
                         height: "500px"
