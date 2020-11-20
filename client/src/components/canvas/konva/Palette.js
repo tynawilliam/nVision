@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DRAG_DATA_KEY, SHAPE_TYPES } from "./constants";
-import  PhotoContext  from '../../../context/PhotoContext';
 import OptionsContext from '../../../context/OptionsContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -58,8 +57,6 @@ const handleDragStart = (event) => {
 
 export function Palette() {
   const [currentOption] = useContext(OptionsContext)
-  // useEffect(() => console.log(`Hey there ${currentOption}`), [currentOption])
-  // const { photos } = useContext(PhotoContext)
   const [images, setImages ] = useState([
     {
         urls: {

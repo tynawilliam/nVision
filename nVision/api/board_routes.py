@@ -73,3 +73,16 @@ def friends_boards(id):
         print(f_boards)
         return {"friends_boards": f_boards}
     return {"friends_boards": []}
+
+@board_routes.route('/<int:id>/saved')
+def saved_boards(id):
+    user = User.query.get(id)
+
+    if user.saved:
+        saved_boards = user.saved.split(',')
+
+        boards = [Board.query.filter(Board.id == int(saved_id)).all() for saved_id in saved_boards]
+        f_boards = ([[val.to_dict() for val in board] for board in boards])
+        print(f_boards)
+
+        return {"saved_boards": f_boards}

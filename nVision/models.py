@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(100), nullable=False)
   profile_picture_url = db.Column(db.String())
   friends = db.Column(db.String)
+  saved = db.Column(db.String)
   created_at = db.Column(db.DateTime, nullable=False)
   updated_at = db.Column(db.DateTime, nullable=False)
 
@@ -54,6 +55,7 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "profile_picture_url": self.profile_picture_url,
       "friends": self.friends,
+      "saved": self.saved,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
 

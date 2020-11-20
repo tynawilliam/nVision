@@ -20,7 +20,8 @@ import Profile from './components/profile/Profile';
 import FeaturedBoards from './components/profile/FeaturedBoards';
 import BoardContext from './context/BoardContext';
 import ImageSearch from './components/canvas/konva/ImageSearch';
-
+import SearchContext from './context/SearchContext'
+import SavedContext from './context/SavedContext'
 
 function App() {
     const [fetchWithCSRF, setFetchWithCSRF] = useState(() => fetch);
@@ -53,6 +54,16 @@ function App() {
     const [currentPhoto, setCurrentPhoto] = useState(null)
     const [currentOption, setCurrentOption] = useState('shapes')
     const [boardName, setBoardName] = useState('')
+    const [feedSearch, setFeedSearch] = useState('')
+    const [savedBoards, setSavedBoards] = useState([
+        [
+            {
+                id: 99,
+                board_url: "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg",
+                name: "Demo"
+            }
+        ]
+    ])
     const authContextValue = {
         fetchWithCSRF,
         currentUserId,
@@ -77,6 +88,16 @@ function App() {
         setBoardName
     ]
 
+    const searchContextValue = [
+        feedSearch,
+        setFeedSearch
+    ]
+
+    const savedContextValue = [
+        savedBoards,
+        setSavedBoards
+    ]
+
     useEffect(() => {
         (async () => {
             const res = await fetch('/restore')
@@ -96,29 +117,25 @@ function App() {
         <OptionsContext.Provider value={optionsContextValue}>
             <PhotoContext.Provider value={photoContextValue}>
                 <BoardContext.Provider value={boardContextValue}>
-                    <BrowserRouter>
-                        <DndProvider backend={HTML5Backend}>
-                            {/* <nav>
-                                <ul>
-                                    <li><NavLink to='/canvas'>New Canvas</NavLink></li>
-                                    <li><NavLink to='/'>Home</NavLink></li>
-                                </ul>
-                            </nav> */}
-                            <Switch>
-                                {/* <Route path="/users">
-                                    <UserList currentUserId={currentUserId}/>
-                                </Route> */}
-                                <AuthRoute exact path='/signup' component={Signup}/>
-                                <AuthRoute exact path='/login' component={Login}/>
-                                <ProtectedRoute exact path="/" component={Homepage} />
-                                <ProtectedRoute exact path='/profile' component={Profile} />
-                                <Route exact path='/canvas'>
-                                    <Canvas />
-                                </Route>
+                    <SearchContext.Provider value={searchContextValue}>
+                        <SavedContext.Provider value={savedContextValue}>
+                            <BrowserRouter>
+                                <DndProvider backend={HTML5Backend}>
 
-                            </Switch>
-                        </DndProvider>
-                    </BrowserRouter>
+                                    <Switch>
+                                        <AuthRoute exact path='/signup' component={Signup}/>
+                                        <AuthRoute exact path='/login' component={Login}/>
+                                        <ProtectedRoute exact path="/" component={Homepage} />
+                                        <ProtectedRoute exact path='/profile' component={Profile} />
+                                        <Route exact path='/canvas'>
+                                            <Canvas />
+                                        </Route>
+
+                                    </Switch>
+                                </DndProvider>
+                            </BrowserRouter>
+                        </SavedContext.Provider>
+                    </SearchContext.Provider>
                 </BoardContext.Provider>
             </PhotoContext.Provider>
         </OptionsContext.Provider>
