@@ -1,3 +1,7 @@
 .homeBody{
     background-image: none;
 }
+
+.userBoard:hover {
+    transform: scale(1.2);
+}

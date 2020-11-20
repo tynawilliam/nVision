@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Board from '../canvas/Board';
 import AuthContext from '../../context/AuthContext'
+import '../../styles/home.css'
 
 function UserBoards() {
     const {currentUser} = useContext(AuthContext)
@@ -36,7 +37,7 @@ function UserBoards() {
                 justifyContent: "left"
             }}>
                 {boards.map((board, idx) => (
-                    <div key={idx}>
+                    <div className='userBoard' key={idx}>
                         <img alt="Not Found" src={board.board_url} style={{
                             width: "300px",
                             height: "300px",

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext'
 import SavedContext from '../../context/SavedContext';
+import '../../styles/home.css'
 
 function SavedBoards() {
     const {currentUser} = useContext(AuthContext)
@@ -35,7 +36,7 @@ function SavedBoards() {
             justifyContent: "left"
         }}>
             {savedBoards.map((board, idx) => (
-                <div key={idx}>
+                <div className='userBoard' key={idx}>
                     <img alt="Not Found" src={board[0].board_url} style={{
                         width: "300px",
                         height: "300px",

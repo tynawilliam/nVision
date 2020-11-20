@@ -8,7 +8,7 @@ from nVision.models import User, Board
 #user_id, name, board_url, likes, is_private
 
 boards = [
-  (1, "MyBoard", "https://images.squarespace-cdn.com/content/v1/56219993e4b09501ec54f74a/1492459278105-Z7JABV54FEMPF0HO9G6A/ke17ZwdGBToddI8pDm48kPoswlzjSVMM-SxOp7CV59BZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIeQMKeWYgwh6Mn73n2eZmZLHHpcPIxgL2SArp_rN2M_AKMshLAGzx4R3EDFOm1kBS/Vision+Board", "200",False),
+  (1, "MyBoard", "https://i.ibb.co/VxFswZB/Screen-Shot-2020-11-20-at-1-41-55-AM.png", "200",False),
   (1, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
   (1, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
   (1, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
@@ -53,6 +53,7 @@ with app.app_context():
             password = "password",
             profile_picture_url = 'https://primandprosper.org/wp-content/uploads/2019/02/Black-Girl-Magic.png',
             friends = '2,3,4',
+            saved = '8,9',
             created_at = datetime.now(),
             updated_at = datetime.now()
             )
