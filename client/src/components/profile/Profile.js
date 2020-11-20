@@ -4,6 +4,7 @@ import AuhtContext from '../../context/AuthContext'
 import '../../styles/profile.css'
 import UserBoards from './UserBoards';
 import FeaturedBoards from './FeaturedBoards';
+import SavedBoards from './SavedBoards';
 
 // import
 
@@ -18,6 +19,8 @@ function Profile() {
                 <FeaturedBoards />
                 <h2>Your Boards</h2>
                 <UserBoards />
+                <h2>Saved Boards</h2>
+                <SavedBoards />
             </div>
         </div>
     )
