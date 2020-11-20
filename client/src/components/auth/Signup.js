@@ -94,6 +94,12 @@ function Signup(props) {
                         fontSize: "17px"
                     }} className="login_submit" type="submit" value="Sign up"/>
                 </div>
+                <div>
+                    <a style={{
+                        color: "whitesmoke",
+                        paddingTop: "20px"
+                    }} href='/login'>Already have an account? Sign In</a>
+                </div>
             </form>
         </div>
     )

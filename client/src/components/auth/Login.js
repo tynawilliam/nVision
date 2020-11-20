@@ -69,7 +69,10 @@ function Login(props) {
                     <input className='fields' type="password" placeholder="Password" value={password} onChange={getPassword} />
                 </div>
                 <div style={{display: "flex", flexDirection: "row", color: "white", justifyContent: "space-evenly"}}>
-                    <div className='formText'>Keep me logged in</div><div className='formText'>Forgot Password?</div>
+                    <div className='formText'><a style={{
+                        color: "whitesmoke",
+                        textDecoration: "none"
+                    }} href='/signup'>New User? Sign Up</a></div><div className='formText'>Forgot Password?</div>
 
                 </div>
                 <div id='loginForm_submit'>
