@@ -64,6 +64,9 @@ def friends_boards(id):
     if user.friends:
         friends_lst = user.friends.split(',')
 
+        # boards = [Board.query.join(User, Board.user_id == User.id)
+        #     .add_columns(Board.board_url, Board.created_at, Board.id, Board.name, User.username)
+        #     .filter(Board.user_id == int(friend_id)).all() for friend_id in friends_lst]
 
         boards = [Board.query.filter(Board.user_id == int(friend_id)).all() for friend_id in friends_lst]
         f_boards = ([[val.to_dict() for val in board] for board in boards])
