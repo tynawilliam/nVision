@@ -16,6 +16,7 @@ def index():
             return jsonify({"msg": "Missing JSON in request"}), 400
 
         user_id = request.json.get('user_id', None)
+        username = request.json.get('username', None)
         name = request.json.get('name', None)
         board_url = request.json.get('board_url', None)
         is_private = request.json.get('is_private', None)
@@ -25,6 +26,7 @@ def index():
 
         new_board = Board(
             user_id=user_id,
+            username=username,
             name=name,
             board_url=board_url,
             is_private=is_private,

@@ -118,7 +118,7 @@ function BoardList() {
                             display: "flex",
                             flexDirection: "row",
                             justifyContent: "space-between"
-                        }}>{board.user_id}
+                        }}>{board.username}
                         </span>
                     </div>
                 </div>
@@ -140,7 +140,8 @@ function BoardList() {
                             justifyContent: "space-between"
                         }}>
                         <h3>{activeBoard.name}</h3>
-                        <span>{activeBoard.username}
+                        <h4>Created By: {activeBoard.username}</h4>
+                        <span>
                                 <button type='submit' id={activeBoard.id} onClick={handleSave} className='saveBtn'>{save}</button>
                         </span>
                     </div>

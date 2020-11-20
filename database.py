@@ -8,37 +8,37 @@ from nVision.models import User, Board
 #user_id, name, board_url, likes, is_private
 
 boards = [
-  (1, "MyBoard", "https://i.ibb.co/VxFswZB/Screen-Shot-2020-11-20-at-1-41-55-AM.png", "200",False),
-  (1, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
-  (1, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
-  (1, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
-  (1, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
-  (1, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
-  (1, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
-  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
-  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
-  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
-  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
-  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
-  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
-  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
-  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
-  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
-  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
-  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
-  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
-  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
-  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
-  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
-  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
-  (3, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
-  (3, "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
-  (3, "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
-  (2, "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
-  (2, "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
-  (2, "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
-  (4, "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
-  (4, "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
+  (1,"DemoUser", "MyBoard", "https://i.ibb.co/VxFswZB/Screen-Shot-2020-11-20-at-1-41-55-AM.png", "200",False),
+  (1,"DemoUser", "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (1,"DemoUser", "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (1,"DemoUser", "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (1,"DemoUser", "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (1,"DemoUser", "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (1,"DemoUser", "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (3,"TheDean", "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3,"TheDean", "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (3,"TheDean", "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (2,"jman", "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (2,"jman", "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (2,"jman", "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (4, "Angie", "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (4,"Angie",  "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3,"TheDean", "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3,"TheDean", "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (3,"TheDean", "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (2,"jman", "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (2,"jman", "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (2,"jman", "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (4,"Angie", "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (4,"Angie", "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3,"TheDean","Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False),
+  (3,"TheDean", "Wedding","https://cdn.shopify.com/s/files/1/1536/4861/articles/vision-board-2_1024x1024.jpg?v=1476395397", "315", False),
+  (3,"TheDean", "Party", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "125", False),
+  (2,"jman", "Travel", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "245", False),
+  (2,"jman", "Decor", "https://i.pinimg.com/originals/4d/65/3c/4d653cffa8cdd97c1dcf002ac63a22ed.jpg", "322", False),
+  (2,"jman", "Plans", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "175", True),
+  (4,"Angie", "WishList", "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg", "304", True),
+  (4,"Angie", "Random", "https://myteacherwellness.com/wp-content/uploads/2017/09/vision-board.jpg", "277", False)
 ]
 
 with app.app_context():
@@ -106,15 +106,17 @@ with app.app_context():
 
     board_t = []
     for board in boards:
-        user_id = board[0]
-        name = board[1],
-        board_url = board[2]
-        likes = board[3]
-        is_private = board[4]
+        user_id = board[0],
+        username = board[1]
+        name = board[2],
+        board_url = board[3]
+        likes = board[4]
+        is_private = board[5]
         created_at = datetime.now()
         board_t.append(created_at)
         db.session.add(Board(
             user_id=user_id,
+            username=username,
             name=name,
             board_url=board_url,
             likes=likes,

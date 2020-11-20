@@ -67,6 +67,7 @@ class Board(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+  username = db.Column(db.String)
   name = db.Column(db.String(40), nullable=False)
   board_url = db.Column(db.String, nullable=False)
   likes = db.Column(db.String)
@@ -81,6 +82,7 @@ class Board(db.Model):
     return {
       "id": self.id,
       "user_id": self.user_id,
+      "username": self.username,
       "name": self.name,
       "board_url": self.board_url,
       "likes": self.likes,
