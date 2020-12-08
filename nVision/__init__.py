@@ -15,6 +15,7 @@ from nVision.models import db, User, Board, Comment
 from nVision.api.user_routes import user_routes
 from nVision.api.board_routes import board_routes
 from nVision.api.comment_routes import comment_routes
+from nVision.api.uploads import upload_routes
 from nVision.config import Config
 
 app = Flask(__name__)
@@ -24,6 +25,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(board_routes, url_prefix='/api/boards')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(upload_routes, url_prefix='/api/uploads')
 db.init_app(app)
 
 image_blueprint = Blueprint('images', __name__, static_url_path='/images', static_folder='static/images')
