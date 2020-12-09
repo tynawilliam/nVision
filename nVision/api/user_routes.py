@@ -34,10 +34,18 @@ def get_user(id):
     user.username = request.json.get('username', None) or user_dict["username"]
     user.profile_picture_url = request.json.get('profile_picture_url', None) or user_dict["profile_picture_url"]
     if(request.json.get('saved')):
-      print('Hey You')
       oldArr = user.saved
       new_id = str(request.json.get('saved'))
       user.saved = oldArr + f',{new_id}'
+    if(request.json.get('unsaved')):
+      oldArr = user.saved.split(',')
+      unsave = str(request.json.get('unsaved'))
+      oldArr.remove(unsave)
+      newSaved = ''
+      for i in oldArr:
+        newSaved += f',{i}'
+      user.saved = newSaved[1:]
+
     user.updated_at = datetime.now()
     db.session.commit()
     return user.to_dict()
