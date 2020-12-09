@@ -8,7 +8,6 @@ function SearchBar() {
 
     const searchWord = e => {
         setFeedSearch(e.target.value)
-
     }
     return (
         <div className='searchBar'>
