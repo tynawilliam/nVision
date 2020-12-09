@@ -31,13 +31,26 @@ function BoardList() {
     const [show, setShow] = useState(false)
     const [activeBoard, setActiveBoard] = useState({})
     const [savedBoards, setSavedBoards]= useContext(SavedContext)
-    // const [likes, setLikes] = useState(null)
-
-    const [boards, setBoards] = useState([
+    const [feedSearch, setFeedSearch] = useContext(SearchContext)
+    const [searchBoards, setSearchBoards] = useState([
         {
+            id: 300,
+            user_id:1,
+            username: "DemoUser",
+            name: "Searched",
             board_url: "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg"
         }
     ])
+
+    const [boards, setBoards] = useState([
+        {
+            name: "Test",
+            board_url: "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg"
+        }
+    ])
+    const searchBds = boards.filter(board => (
+        board.name.toLowerCase().startsWith(feedSearch.toLowerCase())
+    ))
 
     useEffect(() => {
         (async () => {
@@ -109,20 +122,37 @@ function BoardList() {
 
     return (
         <div className='feed'>
-            {boards.map((board, idx) => (
-                <div className='feedBoard' key={idx} id={board.id} onClick={handleClick}>
-                    <img src={board.board_url} />
-                    <div className='feedBoard_info'>
-                        <h3>{board.name}</h3>
-                        <span style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "space-between"
-                        }}>{board.username}
-                        </span>
+            {feedSearch === '' ?
+                boards.map((board, idx) => (
+                    <div className='feedBoard' key={idx} id={board.id} onClick={handleClick}>
+                        <img src={board.board_url} />
+                        <div className='feedBoard_info'>
+                            <h3>{board.name}</h3>
+                            <span style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between"
+                            }}>{board.username}
+                            </span>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))
+            :
+                searchBds.map((board, idx) => (
+                    <div className='feedBoard' key={idx} id={board.id} onClick={handleClick}>
+                        <img src={board.board_url} />
+                        <div className='feedBoard_info'>
+                            <h3>{board.name}</h3>
+                            <span style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between"
+                            }}>{board.username}
+                            </span>
+                        </div>
+                    </div>
+                ))
+            }
             <Modal
                 isOpen={show}
                 onRequestClose={handleClose}
