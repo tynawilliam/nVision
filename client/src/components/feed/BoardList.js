@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import '../../styles/feed.css'
-import { faHeart, faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faBookmark, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 import AuthContext from '../../context/AuthContext'
@@ -26,21 +26,14 @@ const customStyles = {
 
 function BoardList() {
     const save = <FontAwesomeIcon icon={faBookmark} />
+    const like = <FontAwesomeIcon icon={faHeart} />
+    const noLike = <FontAwesomeIcon icon={faHeartBroken} />
     const {currentUserId} = useContext(AuthContext)
     const [isModal, setIsModal] = useState(false)
     const [show, setShow] = useState(false)
     const [activeBoard, setActiveBoard] = useState({})
     const [savedBoards, setSavedBoards]= useContext(SavedContext)
     const [feedSearch, setFeedSearch] = useContext(SearchContext)
-    const [searchBoards, setSearchBoards] = useState([
-        {
-            id: 300,
-            user_id:1,
-            username: "DemoUser",
-            name: "Searched",
-            board_url: "https://jjsanjose.files.wordpress.com/2012/01/vision-board-2012-120111.jpg"
-        }
-    ])
 
     const [boards, setBoards] = useState([
         {
@@ -75,26 +68,61 @@ function BoardList() {
         })()
     }, [])
 
+    useEffect(() => {
+        (async () => {
+            const res = await fetch(`/api/boards/${currentUserId}/saved`)
+            try {
+                if (res.ok) {
+                    const data = await res.json()
+                    setSavedBoards(data.saved_boards)
+
+                }
+            }catch(err) {
+                console.error(err)
+            }
+        })()
+    }, [])
+
     const handleSave = async (e) => {
         e.preventDefault()
+        // // console.log(ids)
+        // ids.push(activeBoard.id)
+
+
         const ids = savedBoards.map(board => board[0].id)
         console.log(ids)
-        ids.push(activeBoard.id)
-        console.log(ids)
-        const data = {
-            saved: activeBoard.id.toString()
-        }
-        console.log(data)
-        try {
-            const res = await fetch(`/api/users/${currentUserId}`, {
-                method: "PUT",
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-        } catch (e) {
-            console.error(e)
+
+        if (!ids.includes(activeBoard.id)){
+            const data = {
+                saved: activeBoard.id.toString()
+            }
+            // console.log(data)
+            try {
+                const res = await fetch(`/api/users/${currentUserId}`, {
+                    method: "PUT",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+            } catch (e) {
+                console.error(e)
+            }
+        } else{
+            const data = {
+                unsaved: activeBoard.id.toString()
+            }
+            try {
+                const res = await fetch(`/api/users/${currentUserId}`, {
+                    method: "PUT",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+            } catch (e) {
+                console.error(e)
+            }
         }
     }
 
