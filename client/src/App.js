@@ -23,6 +23,7 @@ import ImageSearch from './components/canvas/konva/ImageSearch';
 import SearchContext from './context/SearchContext'
 import SavedContext from './context/SavedContext'
 import EditProfile from './components/profile/EditProfile';
+import upload from './components/canvas/upload';
 
 function App() {
     const [fetchWithCSRF, setFetchWithCSRF] = useState(() => fetch);
@@ -130,6 +131,7 @@ function App() {
                                         <ProtectedRoute exact path='/profile' component={Profile} />
                                         <ProtectedRoute exact path='/canvas' component={Canvas}/>
                                         <ProtectedRoute exact path='/edit' component={EditProfile} />
+                                        <Route path='/upload' component={upload} />
 
                                     </Switch>
                                 </DndProvider>

@@ -65,16 +65,16 @@ export function Canvas() {
 
   const downloadImg = () => {
     console.log('saved')
-    // console.log(stageRef.current)
-    // const dataUrl = stageRef.current.toDataURL()
-    // console.log(dataUrl)
-    // const name = `${boardName}.png`
-    // const link = document.createElement('a')
-    // link.download = name
-    // link.href = dataUrl
-    // document.body.appendChild(link)
-    // link.click();
-    // document.body.removeChild(link)
+    console.log(stageRef.current)
+    const dataUrl = stageRef.current.toDataURL()
+    console.log(dataUrl)
+    const name = `${boardName}.png`
+    const link = document.createElement('a')
+    link.download = name
+    link.href = dataUrl
+    document.body.appendChild(link)
+    link.click();
+    document.body.removeChild(link)
   }
 
   return (
