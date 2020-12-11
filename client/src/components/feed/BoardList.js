@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
 import '../../styles/feed.css'
-import { faHeart, faBookmark, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark as bookmark2 } from '@fortawesome/free-regular-svg-icons';
 import Modal from 'react-modal';
 import AuthContext from '../../context/AuthContext'
 import SearchContext from '../../context/SearchContext';
@@ -25,9 +26,9 @@ const customStyles = {
   };
 
 function BoardList() {
-    const save = <FontAwesomeIcon icon={faBookmark} />
+    const save = <FontAwesomeIcon icon={bookmark2} />
     const like = <FontAwesomeIcon icon={faHeart} />
-    const noLike = <FontAwesomeIcon icon={faHeartBroken} />
+    const savedIcon = <FontAwesomeIcon icon={faBookmark} />
     const {currentUserId} = useContext(AuthContext)
     const [isModal, setIsModal] = useState(false)
     const [show, setShow] = useState(false)
@@ -44,6 +45,8 @@ function BoardList() {
     const searchBds = boards.filter(board => (
         board.name.toLowerCase().startsWith(feedSearch.toLowerCase())
     ))
+
+    const savedIds = savedBoards.map(board => board[0].id)
 
     useEffect(() => {
         (async () => {
@@ -81,7 +84,7 @@ function BoardList() {
                 console.error(err)
             }
         })()
-    }, [])
+    }, [savedBoards])
 
     const handleSave = async (e) => {
         e.preventDefault()
@@ -90,7 +93,6 @@ function BoardList() {
 
 
         const ids = savedBoards.map(board => board[0].id)
-        console.log(ids)
 
         if (!ids.includes(activeBoard.id)){
             const data = {
@@ -186,6 +188,7 @@ function BoardList() {
                 onRequestClose={handleClose}
                 style={customStyles}
                 contentLabel='Example Modal'
+                ariaHideApp={false}
             >
                 <div className='save'>
                     <img style={{
@@ -200,7 +203,11 @@ function BoardList() {
                         <h3>{activeBoard.name}</h3>
                         <h4>Created By: {activeBoard.username}</h4>
                         <span>
-                                <button type='submit' id={activeBoard.id} onClick={handleSave} className='saveBtn'>{save}</button>
+                            {savedIds.includes(activeBoard.id)?
+                            <button type='submit' id={activeBoard.id} onClick={handleSave} className='saveBtn'n>{savedIcon}</button>
+                            :<button type='submit' id={activeBoard.id} onClick={handleSave} className='saveBtn'>{save}</button>
+                            }
+
                         </span>
                     </div>
                 </div>
