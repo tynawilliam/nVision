@@ -9,6 +9,8 @@ import SearchContext from '../../context/SearchContext';
 import SavedContext from '../../context/SavedContext';
 import fetch from 'node-fetch';
 
+
+
 const customStyles = {
     content : {
       top                   : '50%',
@@ -23,7 +25,7 @@ const customStyles = {
         display: "flex",
         justifyContent: "center"
     }
-  };
+};
 
 function BoardList() {
     const save = <FontAwesomeIcon icon={bookmark2} />
@@ -55,7 +57,6 @@ function BoardList() {
                 if (res.ok) {
                     const data = await res.json()
                     const friendsBoards = data.friends_boards
-                    // console.log(data)
                     const boardList = []
                     friendsBoards.forEach(boardLst => {
                         for (const board in boardLst) {
@@ -88,8 +89,6 @@ function BoardList() {
 
     const handleSave = async (e) => {
         e.preventDefault()
-        // // console.log(ids)
-        // ids.push(activeBoard.id)
 
 
         const ids = savedBoards.map(board => board[0].id)
@@ -140,14 +139,6 @@ function BoardList() {
         setShow(true)
     }
 
-    // const handleSave = e => {
-    //     e.preventDefault()
-    //     console.log(activeBoard)
-    //     // setSavedBoards(savedBoards.push(activeBoard))
-    //     console.log(savedBoards)
-
-    // }
-    // useEffect(() => console.log(feedSearch), [])
     const handleClose = () => setShow(false)
 
     return (
