@@ -132,6 +132,7 @@ const [searchTerm, setSearchTerm] = useState('dog')
           {images.map((img, idx) => (
             <div key={idx}>
               <img
+                crossOrigin='Anonymous'
                 src={img.urls.small}
                 data-shape={SHAPE_TYPES.PHOTO}
                 draggable

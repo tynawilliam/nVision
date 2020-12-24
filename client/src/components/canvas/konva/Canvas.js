@@ -13,6 +13,7 @@ import {
 import { DRAG_DATA_KEY, SHAPE_TYPES } from "./constants";
 import { Shape } from "./Shape";
 import BoardContext from "../../../context/BoardContext";
+import AuthContext from "../../../context/AuthContext";
 
 const handleDragOver = (event) => event.preventDefault();
 
@@ -20,6 +21,7 @@ export function Canvas() {
   const shapes = useShapes((state) => Object.entries(state.shapes));
   const [photos, setPhotos] = useState([])
   const [boardName]  = useContext(BoardContext)
+  const {currentUser} = useContext(AuthContext)
 
   const stageRef = useRef();
 
@@ -63,26 +65,100 @@ export function Canvas() {
     }
   }, []);
 
-  const downloadImg = () => {
-    console.log('saved')
-    console.log(stageRef.current)
+  // const downloadImg = () => {
+  //   console.log('saved')
+  //   console.log(stageRef.current)
+  //   const dataUrl = stageRef.current.toDataURL()
+  //   console.log(dataUrl)
+  //   const name = `${boardName}.png`
+  //   const link = document.createElement('a')
+  //   link.download = name
+  //   link.href = dataUrl
+  //   document.body.appendChild(link)
+  //   link.click();
+  //   document.body.removeChild(link)
+  // }
+
+  const dataURItoBlob = (dataURI) => {
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+  const saveBoard = (async(e) => {
     const dataUrl = stageRef.current.toDataURL()
-    console.log(dataUrl)
-    const name = `${boardName}.png`
-    const link = document.createElement('a')
-    link.download = name
-    link.href = dataUrl
-    document.body.appendChild(link)
-    link.click();
-    document.body.removeChild(link)
+    const blob = dataURItoBlob(dataUrl)
+    const formData = new FormData(document.forms[0]);
+    formData.append("file", blob, `${boardName}.jpeg`)
+    // formData.append("title", "new")
+    const res = await fetch('/api/uploads/', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = {
+      user_id: currentUser.id,
+      username: currentUser.username,
+      name: boardName,
+      board_url : `https://nvision.s3.us-east-2.amazonaws.com/${boardName}.jpeg`,
+      is_private: false
+
+
+    }
+    try{
+      const res = await fetch(`/api/boards/`, {
+                  method: "POST",
+                  headers: {
+                      'Content-type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+              })
+    } catch (e) {
+        console.error(e)
   }
+  reset()
+  window.location.href = 'http://localhost:3000/profile'
+  // window.location.href = 'http://nvision-app.herokuapp.com/profile'
+})
+
+// useEffect(() => {
+//   const data = {
+//     user_id: currentUser.id,
+//     username = currentUser.username,
+//     name = boardName,
+//     board_url = `https://nvision.s3.us-east-2.amazonaws.com/${boardName}.jpeg`
+
+//   }
+//   (async () => {
+//       try {
+//           const res = await fetch(`/api/boards/`, {
+//                 method: "POST",
+//                 headers: {
+//                     'Content-type': 'application/json'
+//                 },
+//                 body: JSON.stringify(data)
+//             })
+//         } catch (e) {
+//             console.error(e)
+//         }
+//   })()
+// }, [])
 
   return (
     <main className="k-canvas" onDrop={handleDrop} onDragOver={handleDragOver}>
       <div className="buttons">
         <button onClick={saveDiagram}>Save For Later</button>
         <button onClick={reset}>Reset</button>
-        <button onClick={downloadImg}>Save Board</button>
+        <button onClick={saveBoard}>Save Board</button>
       </div>
       <Stage
         ref={stageRef}

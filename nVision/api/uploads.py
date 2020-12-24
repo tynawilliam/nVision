@@ -20,6 +20,9 @@ def upload():
         s3.upload_file(
             Bucket = BUCKET_NAME,
             Filename=f.filename,
-            Key = f.filename
+            Key = f.filename,
+            ExtraArgs={
+                "ACL": "public-read"
+            }
         )
         return 'success'
