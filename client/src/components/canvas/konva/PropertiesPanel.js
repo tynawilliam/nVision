@@ -44,7 +44,7 @@ export function PropertiesPanel() {
                 onChange={updateAttr}
               />
             </div>
-            <div className="key">
+            {/* <div className="key">
               Font {" "}
               <select style={{
                 marginLeft: "5px"
@@ -54,7 +54,7 @@ export function PropertiesPanel() {
                 <option value="helvetica">Helvetica</option>
                 <option value="sansSerif">Sans Serif</option>
               </select>
-            </div>
+            </div> */}
           </>
         ) : (
           <div className="no-data"></div>

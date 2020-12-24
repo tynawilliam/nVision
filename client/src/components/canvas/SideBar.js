@@ -37,10 +37,9 @@ function SideBar() {
                         color: "#FF914D"
                     }} type='text' placeholder='Board name' value={boardName} onChange={getName}/>
                 </form>
-                <button id='template' onClick={handleClick}>Template</button>
                 <button id='images' onClick={handleClick}>Images</button>
                 <button id='shapes' onClick={handleClick}>Shapes</button>
-                <button id='stickers' onClick={handleClick}>Stickers</button>
+                <button id='stickers' onClick={handleClick} disabled>Stickers</button>
                 <button id='notes' onClick={handleClick}>Notes</button>
             </div>
         </div>

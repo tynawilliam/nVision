@@ -68,13 +68,6 @@ export default function FeaturedBoards() {
                         }}>
                         <h3>{activeBoard.name}</h3>
                         <h4>Created By: {activeBoard.username}</h4>
-                        {/* <span>
-                            {savedIds.includes(activeBoard.id)?
-                            <button type='submit' id={activeBoard.id} onClick={handleSave} className='saveBtn'n>{savedIcon}</button>
-                            :<button type='submit' id={activeBoard.id} onClick={handleSave} className='saveBtn'>{save}</button>
-                            }
-
-                        </span> */}
                     </div>
                 </div>
 

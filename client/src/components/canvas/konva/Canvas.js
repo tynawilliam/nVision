@@ -95,63 +95,46 @@ export function Canvas() {
 }
 
   const saveBoard = (async(e) => {
-    const dataUrl = stageRef.current.toDataURL()
-    const blob = dataURItoBlob(dataUrl)
-    const formData = new FormData(document.forms[0]);
-    formData.append("file", blob, `${boardName}.jpeg`)
-    // formData.append("title", "new")
-    const res = await fetch('/api/uploads/', {
-      method: 'POST',
-      body: formData
-    });
+    if (boardName === ''){
+      window.alert('Add a board name')
+    } else{
 
-    const data = {
-      user_id: currentUser.id,
-      username: currentUser.username,
-      name: boardName,
-      board_url : `https://nvision.s3.us-east-2.amazonaws.com/${boardName}.jpeg`,
-      is_private: false
+      const dataUrl = stageRef.current.toDataURL()
+      const blob = dataURItoBlob(dataUrl)
+      const formData = new FormData(document.forms[0]);
+      formData.append("file", blob, `${boardName}.jpeg`)
+      // formData.append("title", "new")
+      const res = await fetch('/api/uploads/', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = {
+        user_id: currentUser.id,
+        username: currentUser.username,
+        name: boardName,
+        board_url : `https://nvision.s3.us-east-2.amazonaws.com/${boardName}.jpeg`,
+        is_private: false
 
 
+      }
+      try{
+        const res = await fetch(`/api/boards/`, {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+      } catch (e) {
+          console.error(e)
     }
-    try{
-      const res = await fetch(`/api/boards/`, {
-                  method: "POST",
-                  headers: {
-                      'Content-type': 'application/json'
-                  },
-                  body: JSON.stringify(data)
-              })
-    } catch (e) {
-        console.error(e)
-  }
-  reset()
-  window.location.href = 'http://localhost:3000/profile'
+    reset()
+    window.location.href = 'http://localhost:3000/profile'
+    }
   // window.location.href = 'http://nvision-app.herokuapp.com/profile'
 })
 
-// useEffect(() => {
-//   const data = {
-//     user_id: currentUser.id,
-//     username = currentUser.username,
-//     name = boardName,
-//     board_url = `https://nvision.s3.us-east-2.amazonaws.com/${boardName}.jpeg`
-
-//   }
-//   (async () => {
-//       try {
-//           const res = await fetch(`/api/boards/`, {
-//                 method: "POST",
-//                 headers: {
-//                     'Content-type': 'application/json'
-//                 },
-//                 body: JSON.stringify(data)
-//             })
-//         } catch (e) {
-//             console.error(e)
-//         }
-//   })()
-// }, [])
 
   return (
     <main className="k-canvas" onDrop={handleDrop} onDragOver={handleDragOver}>

@@ -139,3 +139,10 @@ aside {
 .buttons button:hover {
   background: darkgray;
 }
+a:hover,.logoutButton:hover {
+  color: #FF914D;
+}
+
+#stickers:hover, #notes:hover{
+  cursor: not-allowed;
+}
