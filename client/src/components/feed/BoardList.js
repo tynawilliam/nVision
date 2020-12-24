@@ -85,7 +85,7 @@ function BoardList() {
                 console.error(err)
             }
         })()
-    }, [savedBoards])
+    }, [setSavedBoards])
 
     const handleSave = async (e) => {
         e.preventDefault()
