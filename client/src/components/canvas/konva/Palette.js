@@ -65,7 +65,10 @@ export function Palette() {
     }
 ])
 const [searchTerm, setSearchTerm] = useState('dog')
-    const unsplash = new Unsplash({ accessKey: `8aHQQpHFrOaLp9HmUj1KNGz7xJkNgIa2WgegE3_rscE` })
+    const unsplash = new Unsplash({ accessKey: process.env.REACT_APP_UNSPLASH_KEY })
+    console.log('heerree')
+    console.log(process.env)
+
 
     unsplash.users.profile("tynawilliam")
         .catch(err => {
@@ -74,7 +77,7 @@ const [searchTerm, setSearchTerm] = useState('dog')
 
     useEffect(() => {
         (async() => {
-            const data = await unsplash.search.photos(`${searchTerm}`, 1, 10, { orientation: "portrait", color: "green"})
+            const data = await unsplash.search.photos(`${searchTerm}`, 1, 20, { orientation: "portrait", color: "green"})
             try{
                 if (data.ok) {
                     const jsonData = await data.json()
@@ -126,12 +129,13 @@ const [searchTerm, setSearchTerm] = useState('dog')
           }}>Search</button> */}
                 </form>
         <div style={{
-            height: "600px",
+            height: "576px",
             overflowY: "auto"
           }}>
           {images.map((img, idx) => (
             <div key={idx}>
               <img
+                crossOrigin='Anonymous'
                 src={img.urls.small}
                 data-shape={SHAPE_TYPES.PHOTO}
                 draggable

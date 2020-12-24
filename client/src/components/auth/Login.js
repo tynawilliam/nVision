@@ -3,8 +3,8 @@ import AuthContext from '../../context/AuthContext';
 import '../../styles/login.css'
 
 function Login(props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('demo@user.com');
+    const [password, setPassword] = useState('password');
     const {fetchWithCSRF, setCurrentUserId} = useContext(AuthContext)
 
     const getEmail = e => {

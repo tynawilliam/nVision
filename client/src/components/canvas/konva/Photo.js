@@ -29,10 +29,13 @@ export function Photo({ id, isSelected, type, ...shapeProps }) {
     }
   }, [isSelected]);
 
-  // const image = new Image();
+  const image = new Image();
+  image.setAttribute('src', url)
   // image.src = url;
-  // image.crossOrigin = 'Anonymous';
-  const [image] = useImage(url)
+  // const [image] = useImage(url)
+  // if (image){
+  //   image.crossOrigin = 'Anonymous';
+  // }
 
   const handleSelect = useCallback(
     (event) => {
@@ -57,10 +60,11 @@ export function Photo({ id, isSelected, type, ...shapeProps }) {
     [id]
   );
     if (image){
-      // image.crossOrigin = 'anonymous';
+      image.crossOrigin = 'anonymous';
     }
   return (
     <>
+    {image.crossOrigin ?
       <KonvaImage
         onClick={handleSelect}
         onTap={handleSelect}
@@ -71,7 +75,7 @@ export function Photo({ id, isSelected, type, ...shapeProps }) {
         draggable
         onDragEnd={handleDrag}
         onTransformEnd={handleTransform}
-      />
+      /> : null}
       {isSelected && (
         <Transformer
           keepRatio={true}

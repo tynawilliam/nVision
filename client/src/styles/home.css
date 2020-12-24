@@ -5,3 +5,8 @@
 .userBoard:hover {
     transform: scale(1.2);
 }
+
+.userBoard{
+    border: 3px solid white;
+    background-color: #FF914D;
+}

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request, url_for
 from nVision.models import User, Board, db
 from flask_login import current_user, login_required
 from datetime import datetime
+from sqlalchemy import desc
 user_routes = Blueprint('users', __name__)
 
 user_routes = Blueprint('users', __name__)
@@ -60,6 +61,6 @@ def get_friends(id):
 @user_routes.route('/<int:id>/boards', methods=['GET'])
 def get_boards(id):
   if request.method == 'GET':
-    boards = Board.query.filter(Board.user_id == id).all()
+    boards = Board.query.filter(Board.user_id == id).order_by(Board.created_at.desc()).all()
 
     return {"boards": [board.to_dict() for board in boards]}
