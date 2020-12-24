@@ -130,9 +130,9 @@ export function Canvas() {
           console.error(e)
     }
     reset()
-    window.location.href = 'http://localhost:3000/profile'
+    // window.location.href = 'http://localhost:3000/profile'
     }
-  // window.location.href = 'http://nvision-app.herokuapp.com/profile'
+  window.location.href = 'http://nvision-app.herokuapp.com/profile'
 })
 
 

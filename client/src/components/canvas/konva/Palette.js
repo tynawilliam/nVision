@@ -65,7 +65,7 @@ export function Palette() {
     }
 ])
 const [searchTerm, setSearchTerm] = useState('dog')
-    const unsplash = new Unsplash({ accessKey: process.env.REACT_APP_UNSPLASH_KEY })
+    const unsplash = new Unsplash({ accessKey: '8aHQQpHFrOaLp9HmUj1KNGz7xJkNgIa2WgegE3_rscE'})
     console.log('heerree')
     console.log(process.env)
 
