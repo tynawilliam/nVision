@@ -3,7 +3,7 @@
 By Tyna William
 
 ## Software Architecture
-  nVision was built on a Python, Flask and PostgresQL backend, and a JavaScript React front end. The database user model allows user profiles to be created with a username, email and password, where the original password is hashed before being stored in the database. User can later add a profile picture which is stored in a
+  nVision was built on a Python, Flask and PostgresQL backend, and a JavaScript React front end. The database user model allows user profiles to be created with a username, email and password, where the original password is hashed using the Werkzeug library, to prevent the storage of plain text password in the database. User can later add a profile picture which is stored in a
   
 ### Technologies Used
   - React
